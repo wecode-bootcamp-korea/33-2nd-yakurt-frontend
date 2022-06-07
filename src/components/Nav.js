@@ -1,6 +1,10 @@
+import { useState, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 
-const Nav = ({ category, handleSelect }) => {
+const Nav = () => {
+  const [category, setCategory] = useState('');
+  const handleSelect = useCallback(category => setCategory(category), []);
+
   return (
     <NavWrapper>
       <h2 className="logo">Yakurt</h2>
@@ -66,7 +70,7 @@ const NavWrapper = styled.aside`
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
-    color: lightcoral;
+    color: coral;
   }
 `;
 
