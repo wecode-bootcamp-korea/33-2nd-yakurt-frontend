@@ -6,7 +6,7 @@ const Nav = () => {
   const location = useLocation();
 
   const moveTo = path => {
-    navigate(`${path}`);
+    navigate(path);
   };
 
   return (
@@ -16,7 +16,7 @@ const Nav = () => {
         <Category
           key={id}
           onClick={() => moveTo(id)}
-          active={`${location.pathname}` === id}
+          active={location.pathname === id}
         >
           {text}
         </Category>
