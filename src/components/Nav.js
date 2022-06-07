@@ -1,6 +1,10 @@
+import { useState, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 
-const Nav = ({ category, handleSelect }) => {
+const Nav = () => {
+  const [category, setCategory] = useState('');
+  const handleSelect = useCallback(category => setCategory(category), []);
+
   return (
     <NavWrapper>
       <h2 className="logo">Yakurt</h2>
