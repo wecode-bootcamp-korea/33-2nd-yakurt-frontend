@@ -1,20 +1,24 @@
-import { useState, useCallback } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 const Nav = () => {
-  const [category, setCategory] = useState('');
-  const handleSelect = useCallback(category => setCategory(category), []);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const moveTo = path => {
+    navigate(`${path}`);
+  };
 
   return (
     <NavWrapper>
-      <h2 className="logo">Yakurt</h2>
-      {NAV_DATA.map(navData => (
+      <Logo>Yakurt</Logo>
+      {NAV_DATA.map(({ id, text }) => (
         <Category
-          key={navData.id}
-          onClick={() => handleSelect(navData.id)}
-          active={category === navData.id}
+          key={id}
+          onClick={() => moveTo(id)}
+          active={`${location.pathname}` === id}
         >
-          {navData.text}
+          {text}
         </Category>
       ))}
     </NavWrapper>
@@ -23,35 +27,35 @@ const Nav = () => {
 
 const NAV_DATA = [
   {
-    id: 'recommend',
+    id: '/survey',
     text: '추천성분',
   },
   {
-    id: 'product',
+    id: '/product',
     text: '제품보기',
   },
   {
-    id: 'review',
+    id: '/review',
     text: '고객후기',
   },
   {
-    id: 'cart',
+    id: '/cart',
     text: '장바구니',
   },
   {
-    id: 'login',
+    id: '/login',
     text: '로그인',
   },
   {
-    id: 'story',
+    id: '/story',
     text: '스토리',
   },
   {
-    id: 'cs',
+    id: '/cs',
     text: '고객센터',
   },
   {
-    id: 'service',
+    id: '/service',
     text: '기업복지',
   },
 ];
@@ -64,25 +68,28 @@ const NavWrapper = styled.aside`
   width: 100vw;
   height: 6rem;
   padding-bottom: 5px;
+  padding-right: 10rem;
+`;
 
-  .logo {
-    width: 20rem;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: coral;
-  }
+const Logo = styled.h2`
+  width: 20rem;
+  color: rgb(261, 89, 51);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
 `;
 
 const Category = styled.div`
-  margin-left: 2rem;
-  font-size: 0.8rem;
+  min-width: 4rem;
+  margin-left: 3%;
   padding-bottom: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
 
-  ${props =>
-    props.active &&
+  ${({ active }) =>
+    active &&
     css`
-      font-size: 0.8rem;
       border-bottom: 2px solid black;
       &:hover {
         color: grey;
