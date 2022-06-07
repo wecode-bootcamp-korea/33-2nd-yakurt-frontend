@@ -11,7 +11,7 @@ const Router = () => {
     <BrowserRouter>
       <Nav category={category} handleSelect={handleSelect} />
       <Routes>
-        <Route path="/main" element={<Main />} />
+        <Route path="/" element={<Main />} />
       </Routes>
     </BrowserRouter>
   );

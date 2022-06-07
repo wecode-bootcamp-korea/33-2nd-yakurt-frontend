@@ -66,19 +66,20 @@ const NavWrapper = styled.aside`
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
-    color: lightcoral;
+    color: rgb(236, 103, 68);
   }
 `;
 
 const Category = styled.div`
   margin-left: 2rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding-bottom: 5px;
+  font-weight: 600;
+  cursor: pointer;
 
   ${props =>
     props.active &&
     css`
-      font-size: 0.8rem;
       border-bottom: 2px solid black;
       &:hover {
         color: grey;
