@@ -4,6 +4,7 @@ import Cart from './pages/Cart/Cart';
 import TempCart from './pages/Cart/TempCart';
 import Products from './pages/products/Products';
 import ProductDetail from './pages/productDetail/ProductDetail';
+import Survey from './pages/survey/Survey';
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
         <Route path="/tempcart" element={<TempCart />} />
         <Route path="/product" element={<Products />} />
         <Route path="/product/detail" element={<ProductDetail />} />
+        <Route path="/survey" element={<Survey />} />
       </Routes>
     </BrowserRouter>
   );

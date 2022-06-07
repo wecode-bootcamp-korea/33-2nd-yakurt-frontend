@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "desc": "blood",
+    "text": "혈관/혈액순환"
+  },
+  {
+    "id": 2,
+    "desc": "digestion",
+    "text": "소화기능"
+  },
+  {
+    "id": 3,
+    "desc": "skin",
+    "text": "피부"
+  },
+  {
+    "id": 4,
+    "desc": "eyes",
+    "text": "눈"
+  },
+  {
+    "id": 5,
+    "desc": "brain",
+    "text": "두뇌 활동"
+  },
+  {
+    "id": 6,
+    "desc": "fatigue",
+    "text": "피로도"
+  },
+  {
+    "id": 7,
+    "desc": "bone",
+    "text": "뼈"
+  },
+  {
+    "id": 8,
+    "desc": "immunity",
+    "text": "면역"
+  },
+  {
+    "id": 9,
+    "desc": "hair",
+    "text": "모발"
+  }
+]
