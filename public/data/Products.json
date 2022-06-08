@@ -1,0 +1,156 @@
+[
+  {
+    "id": 1,
+    "title": "발효효소 베이직",
+    "description": "편안하고 상쾌한 하루를 위한",
+    "effect": [],
+    "content": [
+      "국제 특허 발효법 사용",
+      "10가지 효소를 한번에",
+      "감초추출물 등 다양한 원료 함유"
+    ],
+    "period": 30,
+    "price": 18500,
+    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+  },
+  {
+    "id": 2,
+    "name": "코엔자임Q10",
+    "description": "높은 혈압 감소를 위한",
+    "effect": ["항산화", "높은 혈압감소"],
+    "content": [
+      "항산화/높은 혈압 감소에 도움",
+      "인도산 코엔자임Q10 원료 사용",
+      "아사이베리 추출 분말 등 부원료 함유"
+    ],
+    "period": 30,
+    "price": 15700,
+    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+  },
+  {
+    "id": 3,
+    "name": "히알루론산 스피루리나",
+    "description": "피부 건강을 위한",
+    "effect": ["피부보습", "피부건강", "항산화"],
+    "content": [
+      "피부보습/피부건강/항산화에 도움",
+      "국내 최초 2종 기능성 제품",
+      "국내산 쌀겨추출분말 함유"
+    ],
+    "period": 30,
+    "price": 19500,
+    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+  },
+  {
+    "id": 4,
+    "name": "홍삼 옥타코사놀",
+    "description": "면역력과 지구력을 위한",
+    "effect": ["면역", "항산화", "지구력"],
+    "content": [
+      "면역력 증진 및 항산화 효과",
+      "지구력 증진과 피로개선",
+      "국내산 6년근 홍삼"
+    ],
+    "period": 30,
+    "price": 21000,
+    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+  },
+  {
+    "id": 5,
+    "name": "프로바이오틱스",
+    "description": "장과 원활한 배변활동을 위한",
+    "effect": ["장건강"],
+    "content": [
+      "유산균 증식 및 유해균 억제",
+      "캐나다/미국 등 11종 유산균 사용",
+      "프리바이오틱스 부원료 함유"
+    ],
+    "period": 30,
+    "price": 13800,
+    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+  },
+  {
+    "id": 6,
+    "name": "오메가3",
+    "description": "혈행개선/눈 건강을 위한",
+    "effect": ["눈", "혈액순환"],
+    "content": [
+      "형행 개선에 도움을 줄 수 있음",
+      "EPA와 DHA의 합 700mg",
+      "작은 어류를 사용한 rTG 오메가3"
+    ],
+    "period": 30,
+    "price": 13500,
+    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+  },
+  {
+    "id": 7,
+    "name": "칼슘 마그네슘 비타민D",
+    "description": "뼈/근육/신경을 위한",
+    "effect": ["뼈", "에너지"],
+    "content": [
+      "뼈와 치아 형성에 필요",
+      "골다공증 발생 위험 감소에 도움",
+      "북대서양에서 수확한 해조류 사용"
+    ],
+    "period": 30,
+    "price": 12400,
+    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+  },
+  {
+    "id": 8,
+    "name": "비타민B",
+    "description": "에너지 충전을 위한",
+    "effect": ["에너지"],
+    "content": [
+      "체내 에너지 생성에 필요",
+      "각종 대사 활동에 필요",
+      "풍부한 7가지 비타민B 성분"
+    ],
+    "period": 30,
+    "price": 18500,
+    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+  },
+  {
+    "id": 9,
+    "name": "비타민C",
+    "description": "활성산소를 제거하는",
+    "effect": ["항산화", "면역"],
+    "content": [
+      "항산화/면역 개선에 도움",
+      "면역기능 및 세포보호 성분 포함",
+      "감초추출물 등 다양한 원료 함유"
+    ],
+    "period": 30,
+    "price": 11900,
+    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+  },
+  {
+    "id": 10,
+    "name": "밀크씨슬",
+    "description": "건강한 간을 위한",
+    "effect": ["간"],
+    "content": [
+      "국제 특허 발효법 사용",
+      "10가지 효소를 한번에",
+      "감초추출물 등 다양한 원료 함유"
+    ],
+    "period": 30,
+    "price": 11300,
+    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+  },
+  {
+    "id": 11,
+    "name": "루테인",
+    "description": "눈 건강을 위한",
+    "effect": ["눈"],
+    "content": [
+      "국제 특허 발효법 사용",
+      "10가지 효소를 한번에",
+      "감초추출물 등 다양한 원료 함유"
+    ],
+    "period": 30,
+    "price": 10600,
+    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+  }
+]
