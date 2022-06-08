@@ -10,6 +10,12 @@ const GlobalStyles = createGlobalStyle`
     }
     *{
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+      background-color: #FAFAFA;
+      font-family: 'Noto Sans KR', sans-serif;
     }
     input, textarea { 
       -moz-user-select: auto;
