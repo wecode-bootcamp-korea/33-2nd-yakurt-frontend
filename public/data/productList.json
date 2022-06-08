@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "img": "http://health.chosun.com/site/data/img_dir/2020/02/11/2020021102198_0.jpg",
+    "title": "오메가 3",
+    "quantity": 1,
+    "price": 35000
+  },
+  {
+    "id": 2,
+    "img": "https://www.lge.co.kr/kr/images/lg-tiiun/md09174829/gallery/medium02.jpg",
+    "title": "발효효소 베이직",
+    "quantity": 1,
+    "price": 25000
+  },
+  {
+    "id": 3,
+    "img": "https://src.hidoc.co.kr/image/lib/2021/7/2/1625212214021_0.jpg",
+    "title": "코엔자임 Q10",
+    "quantity": 1,
+    "price": 45000
+  }
+]
