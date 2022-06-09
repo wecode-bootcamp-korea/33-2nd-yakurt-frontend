@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "히알루론산 스피루리나",
+    "amount": 1,
+    "price": 19500,
+    "imgUrl": "https://img.pilly.kr/product/v20200519/coq10/shape@2x.png?v=v202111121657"
+  },
+  {
+    "id": 2,
+    "title": "비타민C",
+    "amount": 1,
+    "price": 15400,
+    "imgUrl": "https://img.pilly.kr/product/v20200519/vitaminb/shape@2x.png?v=v202111121657"
+  },
+  {
+    "id": 3,
+    "title": "홍삼 옥타코사놀",
+    "amount": 2,
+    "price": 11300,
+    "imgUrl": "https://img.pilly.kr/product/v20200519/milkthistle/shape@2x.png?v=v202111121657"
+  }
+]

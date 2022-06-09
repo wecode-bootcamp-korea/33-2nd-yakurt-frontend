@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-const Nav = ({ active }) => {
+const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -10,7 +10,7 @@ const Nav = ({ active }) => {
   };
 
   return (
-    <NavWrapper active={active}>
+    <NavWrapper pathName={location.pathname}>
       <Logo>Yakurt</Logo>
       {NAV_DATA.map(({ id, text }) => (
         <Category
@@ -70,13 +70,15 @@ const NavWrapper = styled.aside`
   padding-bottom: 5px;
   padding-right: 10rem;
   text-align: center;
+  background-color: white;
+  border-bottom: 1px solid lightgrey;
+  z-index: 10;
 
-  ${({ active }) =>
-    active &&
+  ${({ pathName }) =>
+    pathName === '/' &&
     css`
-      background-color: white;
-      border-bottom: 1px solid lightgray;
-      z-index: 10;
+      background-color: transparent;
+      border: none;
     `}
 `;
 
