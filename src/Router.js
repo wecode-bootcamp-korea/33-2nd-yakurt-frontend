@@ -10,6 +10,7 @@ import Review from './pages/review/Review';
 import ReviewDetail from './pages/reviewDetail/ReviewDetail';
 import CustomerReview from './pages/customerReview/CustomerReview';
 import Recommend from './pages/recommend/Recommend';
+import Order from './pages/order/Order';
 
 const Router = () => {
   return (
@@ -26,6 +27,7 @@ const Router = () => {
         <Route path="/review/detail" element={<ReviewDetail />} />
         <Route path="/review/customer" element={<CustomerReview />} />
         <Route path="/recommend" element={<Recommend />} />
+        <Route path="/order" element={<Order />} />
       </Routes>
     </BrowserRouter>
   );
