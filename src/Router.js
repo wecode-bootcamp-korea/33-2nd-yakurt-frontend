@@ -9,6 +9,7 @@ import Survey from './pages/survey/Survey';
 import Review from './pages/review/Review';
 import ReviewDetail from './pages/reviewDetail/ReviewDetail';
 import CustomerReview from './pages/customerReview/CustomerReview';
+import Recommend from './pages/recommend/Recommend';
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
         <Route path="/review" element={<Review />} />
         <Route path="/review/detail" element={<ReviewDetail />} />
         <Route path="/review/customer" element={<CustomerReview />} />
+        <Route path="/recommend" element={<Recommend />} />
       </Routes>
     </BrowserRouter>
   );
