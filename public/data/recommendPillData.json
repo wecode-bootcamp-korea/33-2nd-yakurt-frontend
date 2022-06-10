@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "user": "김완영",
+      "gender": "남성",
+      "age": 25,
+      "BMI": 18.4,
+      "survey_product": [
+        {
+          "product_id": 1,
+          "product_name": "리턴업 발효효소 베이직",
+          "product_information": "리턴업 발효효소 베이직은 소화과정에서 꼭 필요한 2가지 소화효소를 정성껏 발효하여 충분하게 담았습니다.",
+          "product_description": "효소는 소화과정에 있어 섭취하는 음식물을 분해하고, 영양소 흡수를 돕는 중요한 역할을 합니다.\n체내 소화에 필요한 특정효소는 나이가 들수록 감소하여, 타액 아밀라아제의 경우 노인집단의 효소량은 젊은 집단의 효소량보다 약 30배 적습니다",
+          "product_image_url": "https://img.pilly.kr/product/v20200519/cj-fermentenzyme/shape@2x.png?v=v202111121657",
+          "product_effect": []
+        },
+        {
+          "product_id": 2,
+          "product_name": "필리 코엔자임Q10",
+          "product_information": "필리 코엔자임Q10은 국제표준인증(GMP, ISO_900, ISO_22000)을 획득한 원료를 사용하여, 우수한 품질관리를 통해 만들었습니다.",
+          "product_description": "활성산소로부터 인체를 보호하고\n높은 혈압 감소에 도움을 줄 수 있습니다.",
+          "product_image_url": "https://img.pilly.kr/product/v20200519/calmgd/tablet.png?v=v202111121657?v=v202111121657",
+          "product_effect": ["항산화", "높은혈압감소"]
+        }
+      ]
+    }
+  ]
+}

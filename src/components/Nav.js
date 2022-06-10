@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-const Nav = () => {
+const Nav = ({ active }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -10,7 +10,7 @@ const Nav = () => {
   };
 
   return (
-    <NavWrapper>
+    <NavWrapper active={active}>
       <Logo>Yakurt</Logo>
       {NAV_DATA.map(({ id, text }) => (
         <Category
@@ -27,7 +27,7 @@ const Nav = () => {
 
 const NAV_DATA = [
   {
-    id: '/survey',
+    id: '/recommend',
     text: '추천성분',
   },
   {
@@ -69,6 +69,15 @@ const NavWrapper = styled.aside`
   height: 6rem;
   padding-bottom: 5px;
   padding-right: 10rem;
+  text-align: center;
+
+  ${({ active }) =>
+    active &&
+    css`
+      background-color: white;
+      border-bottom: 1px solid lightgray;
+      z-index: 10;
+    `}
 `;
 
 const Logo = styled.h2`
