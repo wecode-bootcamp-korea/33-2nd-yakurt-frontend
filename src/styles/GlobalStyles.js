@@ -17,6 +17,10 @@ const GlobalStyles = createGlobalStyle`
       background-color: #FAFAFA;
       font-family: 'Noto Sans KR', sans-serif;
     }
+    body{
+      background-color: #FAFAFA;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
     input, textarea { 
       -moz-user-select: auto;
       -webkit-user-select: auto;
