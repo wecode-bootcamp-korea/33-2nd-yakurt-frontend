@@ -1,24 +1,29 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Content = () => {
+const Content = ({ reviewList }) => {
+  const navigate = useNavigate();
+
+  const goToDetail = () => {
+    navigate(`/review/detail/${reviewList.id}`);
+  };
+
   return (
     <>
       <Top>
         <Preview>
-          <span>박**</span> (오메가3, 비타민B, 밀크씨슬)
+          <span>{reviewList?.name.slice(0, 1)}**</span>
+          (오메가3, 비타민B, 밀크씨슬)
         </Preview>
-        <Period>2022.05.27 / 정기구독 18개월</Period>
+        <Period>
+          {reviewList?.date} / 정기구독 {reviewList?.subscription}개월
+        </Period>
       </Top>
-
-      <Image />
-
+      <Image src={reviewList?.image} />
       <Bottom>
-        <Text>
-          약큐르트 최고!! 항상 약쿠르트 덕분에 영양제 안 까먹고 잘 섭취하고
-          있어요!
-        </Text>
-        <Button>더보기</Button>
+        <Text>{reviewList?.comment}</Text>
+        <Button onClick={goToDetail}>더보기</Button>
       </Bottom>
     </>
   );
@@ -43,9 +48,7 @@ const Period = styled.p`
   font-size: 0.95rem;
 `;
 
-const Image = styled.img.attrs({
-  src: 'https://velog.velcdn.com/images/eunnb05/post/f6bd0ea5-fd41-403b-abe1-ad2a03710959/image.jpg',
-})`
+const Image = styled.img`
   width: 100%;
   height: 350px;
   object-fit: cover;
