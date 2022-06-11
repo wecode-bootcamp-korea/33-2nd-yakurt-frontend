@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import Card from './Card';
 import Content from './Content';
 
 const Review = () => {
+  const [review, setReview] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/Review.json')
+      .then(response => response.json())
+      .then(data => setReview(data));
+  }, []);
+
+  const fetchData = () => {
+    fetch('/data/Review.json')
+      .then(res => res.json())
+      .then(data => setReview([...review, ...data]));
+  };
+
   return (
     <ReviewBody>
       <Header>
@@ -14,16 +29,19 @@ const Review = () => {
         </Description>
       </Header>
 
-      <Section>
-        <Card>
-          <Content />
-        </Card>
+      <Section dataLength={review.length} data next={fetchData} hasMore={true}>
+        {review &&
+          review.map(reviewList => (
+            <Card key={reviewList.id}>
+              <Content reviewList={reviewList} />
+            </Card>
+          ))}
       </Section>
     </ReviewBody>
   );
 };
 
-const ReviewBody = styled.body`
+const ReviewBody = styled.section`
   background-color: #f2f2f2;
 `;
 
@@ -49,14 +67,14 @@ const Description = styled.p`
   }
 `;
 
-const Section = styled.section`
+const Section = styled(InfiniteScroll)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 20px;
   row-gap: 80px;
   margin: 0 auto;
   padding-bottom: 200px;
-  width: 65%;
+  width: 70%;
   min-height: auto;
 `;
 

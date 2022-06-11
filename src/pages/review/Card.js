@@ -7,7 +7,7 @@ const Card = ({ children }) => {
 
 const Container = styled.div`
   position: relative;
-  width: 350px;
+  width: 100%;
   height: 650px;
   padding: 40px 0;
   border: none;

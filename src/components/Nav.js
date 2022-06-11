@@ -85,6 +85,7 @@ const Category = styled.div`
   padding-bottom: 5px;
   font-size: 0.9rem;
   font-weight: 600;
+  text-align: center;
   cursor: pointer;
 
   ${({ active }) =>
