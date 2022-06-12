@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
-const ProductList = ({ itemlist }) => {
+const ProductList = ({ itemlist, setTotalPrice, setCheck, check }) => {
   const { img, title, price, quantity } = itemlist;
+  const [boxChecking, setBoxChecking] = useState(true);
   const [itemQuantity, setItemQuantity] = useState(quantity);
 
+  useEffect(() => {
+    boxChecking
+      ? setTotalPrice(prev => prev + price)
+      : setTotalPrice(prev => prev - price);
+  }, [boxChecking]);
+
   const handleClickPlus = () => {
+    if (itemQuantity === 5) {
+      return alert('제품별로 5개 이상은 구입이 불가합니다.');
+    }
     setItemQuantity(prev => prev + 1);
+    setTotalPrice(prev => prev + price);
   };
 
   const handleClickMinus = () => {
@@ -15,21 +26,36 @@ const ProductList = ({ itemlist }) => {
       return;
     }
     setItemQuantity(prev => prev - 1);
+    setTotalPrice(prev => prev - price);
+  };
+
+  const onCheck = e => {
+    if (e.target.checked) {
+      setCheck([...check, itemlist]);
+    } else {
+      setCheck(check.filter(item => item.id !== itemlist.id));
+    }
+  };
+
+  const activeBox = () => {
+    setBoxChecking(prev => !prev);
   };
 
   return (
-    <Products>
-      <input type="checkbox" />
+    <Products boxChecking={boxChecking}>
+      <input
+        type="checkbox"
+        onClick={e => {
+          onCheck(e);
+          activeBox();
+        }}
+        defaultChecked={boxChecking}
+      />
       <img src={img} alt="product" />
       <CountList>
         <Items>
           <p>{title}</p>
-          <span>
-            {(price * itemQuantity)
-              .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            원
-          </span>
+          <span>{(price * itemQuantity).toLocaleString()}원</span>
         </Items>
         <CountItems>
           <button onClick={handleClickMinus}>
@@ -44,11 +70,20 @@ const ProductList = ({ itemlist }) => {
     </Products>
   );
 };
+
 const Products = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 0.1rem solid #e0e0e0;
   padding-bottom: 1rem;
+  opacity: ${props => {
+    if (props.boxChecking === false) {
+      return 0.3;
+    } else {
+      return 1;
+    }
+  }};
+
   p {
     margin-top: 1rem;
     border-bottom: 0.1rem solid black;

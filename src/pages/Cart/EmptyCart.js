@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import CartHeader from '../../components/Cart/CartHeader';
 
-const TempCart = () => {
+const EmptyCart = () => {
+  const navigate = useNavigate();
+
   return (
     <Background>
       <CartHeader />
@@ -19,7 +22,9 @@ const TempCart = () => {
           나만을 위한 영양성분을 찾아보세요.
         </span>
         <Search>
-          <button>나만의 영양성분 찾기</button>
+          <button onClick={() => navigate('/survey')}>
+            나만의 영양성분 찾기
+          </button>
         </Search>
       </MiddleArea>
     </Background>
@@ -31,7 +36,6 @@ const Background = styled.div`
   flex-direction: column;
   width: 1024px;
   height: 120vh;
-  background-color: white;
   margin: 0 auto;
   padding: 0 137px;
 `;
@@ -42,7 +46,6 @@ const MiddleArea = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 80vh;
-  background: white;
   font-size: 1rem;
   span {
     text-align: center;
@@ -56,7 +59,7 @@ const MiddleOfTop = styled.div`
   align-items: center;
   margin-bottom: 3rem;
   h3 {
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 800;
   }
 `;
@@ -77,11 +80,11 @@ const Search = styled.button`
     border-radius: 3rem;
     background-color: #ff5c35;
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 800;
     line-height: 0.2rem;
     box-shadow: 0 5px 4px 0 rgb(0 0 0 / 15%);
   }
 `;
 
-export default TempCart;
+export default EmptyCart;

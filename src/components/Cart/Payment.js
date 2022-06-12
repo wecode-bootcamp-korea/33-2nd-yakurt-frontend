@@ -1,8 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Payment = () => {
-  return <Button>정기구독 시작하기</Button>;
+  const navigate = useNavigate();
+  return (
+    <Button
+      onClick={() => {
+        navigate('/payment');
+      }}
+    >
+      정기구독 시작하기
+    </Button>
+  );
 };
 
 const Button = styled.button`
@@ -15,7 +25,7 @@ const Button = styled.button`
   border-radius: 3rem;
   background-color: #ff5c35;
   color: white;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 800;
   line-height: 15px;
   box-shadow: 0 5px 4px 0 rgb(0 0 0 / 15%);

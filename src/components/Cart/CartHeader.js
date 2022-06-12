@@ -1,19 +1,23 @@
-import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { FaPlus, FaTrashAlt } from 'react-icons/fa';
 
-const CartHeader = () => {
+const CartHeader = ({ clear }) => {
+  const navigate = useNavigate();
+
   return (
     <MyCart>
-      <p>장바구니</p>
+      <Cart>
+        <p>장바구니</p>
+      </Cart>
       <AddItem>
         <FirstBtn>
-          <button>
+          <button onClick={() => navigate('/product')}>
             <FaPlus /> 제품추가
           </button>
         </FirstBtn>
         <SecondBtn>
-          <button>
+          <button onClick={clear}>
             <FaTrashAlt />
           </button>
         </SecondBtn>
@@ -26,8 +30,12 @@ const MyCart = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 6rem;
-  font-size: 1.5rem;
+  margin-top: 8rem;
+  font-size: 1rem;
+`;
+
+const Cart = styled.div`
+  font-size: 2rem;
 `;
 
 const AddItem = styled.div`
@@ -37,7 +45,7 @@ const AddItem = styled.div`
 const FirstBtn = styled.button`
   width: 7rem;
   height: 3rem;
-  border: 1px solid #e0e0e0;
+  border: 0.063rem solid #e0e0e0;
   border-radius: 2rem;
   padding: 0.8rem;
   margin: 0.3rem;
