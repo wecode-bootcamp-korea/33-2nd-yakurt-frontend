@@ -1,18 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 
-const Payment = () => {
-  const navigate = useNavigate();
-  return (
-    <Button
-      onClick={() => {
-        navigate('/payment');
-      }}
-    >
-      정기구독 시작하기
-    </Button>
-  );
+const Payment = ({ handleClickOrder }) => {
+  return <Button onClick={handleClickOrder}>정기구독 시작하기</Button>;
 };
 
 const Button = styled.button`

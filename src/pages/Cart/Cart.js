@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import CartHeader from '../../components/Cart/CartHeader';
 import ProductList from '../../components/Cart/ProductList';
@@ -9,9 +10,32 @@ const Cart = () => {
   const [itemListValue, setItemListValue] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [check, setCheck] = useState([]);
+  const navigate = useNavigate();
 
   const clear = () => {
     setItemListValue();
+  };
+
+  const handleClickOrder = () => {
+    const query = check
+      .map(checkedItem => {
+        return `cart_id=${checkedItem.id}`;
+      })
+      .join('&');
+
+    fetch(`url/?${query}`, {
+      method: 'PATCH',
+    });
+
+    navigate('/order');
+  };
+
+  const onCheck = (e, itemList) => {
+    if (e.target.checked) {
+      setCheck([...check, itemList]);
+    } else {
+      setCheck(check.filter(item => item.id !== itemList.id));
+    }
   };
 
   useEffect(() => {
@@ -29,18 +53,19 @@ const Cart = () => {
         <h3>정기구독 제품</h3>
         {itemListValue.map(itemlist => (
           <ProductList
-            itemlist={itemlist}
+            itemList={itemlist}
             key={itemlist.id}
             setCheck={setCheck}
             check={check}
             setTotalPrice={setTotalPrice}
+            onCheck={onCheck}
           />
         ))}
         <TotalAmount>
           <p>총 결제금액</p>
           <p>{totalPrice.toLocaleString()}원</p>
         </TotalAmount>
-        <Payment check={check} />
+        <Payment handleClickOrder={handleClickOrder} />
       </Content>
     </CartWrapper>
   ) : (
