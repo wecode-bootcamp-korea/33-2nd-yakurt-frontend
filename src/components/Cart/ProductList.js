@@ -2,16 +2,20 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
-const ProductList = ({ itemlist, setTotalPrice, setCheck, check }) => {
-  const { img, title, price, quantity } = itemlist;
+const ProductList = ({ itemList, setTotalPrice, onCheck, setCheck }) => {
+  const { img, title, price, quantity } = itemList;
   const [boxChecking, setBoxChecking] = useState(true);
   const [itemQuantity, setItemQuantity] = useState(quantity);
 
   useEffect(() => {
     boxChecking
-      ? setTotalPrice(prev => prev + price)
-      : setTotalPrice(prev => prev - price);
+      ? setTotalPrice(prev => prev + price * itemQuantity)
+      : setTotalPrice(prev => prev - price * itemQuantity);
   }, [boxChecking]);
+
+  useEffect(() => {
+    setCheck(prev => [...prev, itemList]);
+  }, []);
 
   const handleClickPlus = () => {
     if (itemQuantity === 5) {
@@ -29,14 +33,6 @@ const ProductList = ({ itemlist, setTotalPrice, setCheck, check }) => {
     setTotalPrice(prev => prev - price);
   };
 
-  const onCheck = e => {
-    if (e.target.checked) {
-      setCheck([...check, itemlist]);
-    } else {
-      setCheck(check.filter(item => item.id !== itemlist.id));
-    }
-  };
-
   const activeBox = () => {
     setBoxChecking(prev => !prev);
   };
@@ -46,7 +42,7 @@ const ProductList = ({ itemlist, setTotalPrice, setCheck, check }) => {
       <input
         type="checkbox"
         onClick={e => {
-          onCheck(e);
+          onCheck(e, itemList);
           activeBox();
         }}
         defaultChecked={boxChecking}
@@ -58,11 +54,11 @@ const ProductList = ({ itemlist, setTotalPrice, setCheck, check }) => {
           <span>{(price * itemQuantity).toLocaleString()}원</span>
         </Items>
         <CountItems>
-          <button onClick={handleClickMinus}>
+          <button onClick={handleClickMinus} disabled={!boxChecking}>
             <FaMinus />
           </button>
           <span>{itemQuantity}</span>
-          <button onClick={handleClickPlus}>
+          <button onClick={handleClickPlus} disabled={!boxChecking}>
             <FaPlus />
           </button>
         </CountItems>
