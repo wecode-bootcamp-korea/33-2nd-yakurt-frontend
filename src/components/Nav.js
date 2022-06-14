@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const login = !!localStorage.getItem('access_token');
 
   const moveTo = path => {
     navigate(path);
@@ -14,9 +15,11 @@ const Nav = () => {
       <Logo>Yakurt</Logo>
       {NAV_DATA.map(({ id, text }) => (
         <Category
+          id={id}
           key={id}
           onClick={() => moveTo(id)}
           active={location.pathname === id}
+          isLogin={login}
         >
           {text}
         </Category>
@@ -43,8 +46,16 @@ const NAV_DATA = [
     text: '장바구니',
   },
   {
+    id: '/mypage',
+    text: 'My약쿠',
+  },
+  {
     id: '/login',
     text: '로그인',
+  },
+  {
+    id: '/logout',
+    text: '로그아웃',
   },
   {
     id: '/story',
@@ -107,6 +118,27 @@ const Category = styled.div`
         color: grey;
       }
     `};
+
+  ${({ isLogin, id }) =>
+    !isLogin &&
+    id === '/mypage' &&
+    css`
+      display: none;
+    `}
+
+  ${({ isLogin, id }) =>
+    !isLogin &&
+    id === '/logout' &&
+    css`
+      display: none;
+    `}
+
+  ${({ isLogin, id }) =>
+    isLogin &&
+    id === '/login' &&
+    css`
+      display: none;
+    `}
 `;
 
 export default Nav;

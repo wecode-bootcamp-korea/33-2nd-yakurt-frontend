@@ -7,7 +7,12 @@ const Recommend = () => {
   const [recommend, setRecommend] = useState({});
 
   useEffect(() => {
-    fetch('/data/recommendPillData.json')
+    fetch('http://10.58.5.236:8000/survey/last', {
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.XlUzgcSXSZv6CWzSs0ZL_IcaqbukQgMAWMXbbAwOoDs',
+      },
+    })
       .then(res => res.json())
       .then(data => {
         setRecommend(data.results[0]);
