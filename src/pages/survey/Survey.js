@@ -13,7 +13,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Survey = () => {
   const [isStart, setIsStart] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [symptomResult, setSymptomResult] = useState([]);
+  const [productId, setProduct] = useState([]);
+  const [userName, setUserName] = useState('');
   const { question, symptom } = useQuestionData();
   const { userInfo, handleUserInfo } = useUserInfo();
   const { gender, handleRadioChange } = useUserGender();
@@ -29,12 +30,24 @@ const Survey = () => {
     if (currentSlide === 5) {
       setResult(prev => ({
         ...prev,
-        ...result,
         ...userInfo,
-        symptomResult,
+        product_id: productId,
         gender,
       }));
     }
+
+    if (currentSlide === 6) {
+      fetch('http://10.58.5.236:8000/survey', {
+        method: 'POST',
+        headers: {
+          Authorization:
+            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.XlUzgcSXSZv6CWzSs0ZL_IcaqbukQgMAWMXbbAwOoDs',
+        },
+        body: JSON.stringify(result),
+      });
+      navigate('/recommend');
+    }
+
     setCurrentSlide(prev => prev + 1);
   };
 
@@ -81,14 +94,14 @@ const Survey = () => {
             <Question>
               <span>질문 {currentSlide + 1}</span>
               <h2>
-                {currentSlide > 0 ? userInfo.userName : ''}
+                {currentSlide > 0 ? userName : ''}
                 {currentSlide !== 6 && question[currentSlide].question}
               </h2>
               <hr />
               {currentSlide === 0 && (
                 <InputBox
                   placeholder="이름"
-                  onChange={handleUserInfo}
+                  onChange={e => setUserName(e.target.value)}
                   name="userName"
                   required
                 />
@@ -119,7 +132,7 @@ const Survey = () => {
                 <InputBox
                   placeholder="나이"
                   onChange={handleUserInfo}
-                  name="userAge"
+                  name="age"
                   required
                 />
               )}
@@ -129,9 +142,7 @@ const Survey = () => {
                     <input
                       type="checkbox"
                       value={desc}
-                      onClick={e =>
-                        setSymptomResult([...symptomResult, e.target.value])
-                      }
+                      onClick={e => setProduct([...productId, id])}
                     />
                     <span>{text}</span>
                   </Symptom>
@@ -140,14 +151,14 @@ const Survey = () => {
                 <InputBox
                   placeholder="키"
                   onChange={handleUserInfo}
-                  name="userTall"
+                  name="height"
                 />
               )}
               {currentSlide === 5 && (
                 <InputBox
                   placeholder="몸무게"
                   onChange={handleUserInfo}
-                  name="userWeight"
+                  name="weight"
                 />
               )}
               <ButtonWrapper>
@@ -189,7 +200,7 @@ const SurveyWrapper = styled.section`
 const SurveyContent = styled.div`
   width: 65%;
   height: fit-content;
-  margin-top: 5rem;
+  margin-top: 10%;
   background-color: #fff;
   box-shadow: 2px 2px 10px rgba(230, 230, 230, 0.8);
 
@@ -209,7 +220,7 @@ const CancelBtn = styled(BsXLg)`
   width: 3rem;
   height: 3rem;
   right: 16%;
-  top: 7%;
+  top: 17%;
   padding: 1rem;
   background-color: #fff;
   font-size: 1.5rem;

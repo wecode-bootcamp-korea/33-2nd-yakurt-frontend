@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 
 export const useUserInfo = () => {
   const [userInfo, setUserInfo] = useState({
-    userName: '',
-    userAge: 0,
-    userTall: 0,
-    userWeight: 0,
+    age: 0,
+    weight: 0,
+    height: 0,
   });
 
   const handleUserInfo = e => {
