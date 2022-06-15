@@ -1,27 +1,34 @@
 import React from 'react';
-import styled from 'styled-components';
 import Content from './Content';
+import { useExit } from '../../hooks/useCustomerReview';
+import styled from 'styled-components';
 import { HiOutlineX } from 'react-icons/hi';
 
 const CustomerReview = () => {
+  const { showForm, handleClose } = useExit();
+
   return (
-    <Form>
-      <Button>
-        <HiOutlineX />
-      </Button>
-      <Content />
-    </Form>
+    <div>
+      {{ showForm } ? (
+        <FormWrapper showForm={showForm}>
+          <Button onClick={handleClose}>
+            <HiOutlineX />
+          </Button>
+          <Content showForm={showForm} />
+        </FormWrapper>
+      ) : (
+        ''
+      )}
+    </div>
   );
 };
 
-const Form = styled.div.attrs({
-  type: 'form',
-})`
+const FormWrapper = styled.div`
   position: relative;
   top: 10rem;
   left: 30rem;
   width: 40rem;
-  height: 50rem;
+  height: 40rem;
   padding: 4rem 3rem;
   background-color: #ffffff;
   border-radius: 10px;

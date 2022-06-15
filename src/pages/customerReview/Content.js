@@ -1,33 +1,119 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { FaPlus } from 'react-icons/fa';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useImageUpload, useStarRating } from '../../hooks/useReview';
+import ImageUploading from 'react-images-uploading';
+import styled from 'styled-components';
+import { FaPlus, FaTrashAlt, FaStar } from 'react-icons/fa';
+import { GrUpdate } from 'react-icons/gr';
 
 const Content = () => {
+  const { images, maxNumber, onChange } = useImageUpload();
+  const {
+    currentValue,
+    hoverValue,
+    stars,
+    handleClick,
+    handleMouseOver,
+    handleMouseLeave,
+  } = useStarRating();
+  const [userInput, setUserInput] = useState('');
+
+  const submitForm = e => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('file', images);
+    formData.append('content', userInput);
+
+    axios({
+      method: 'post',
+      url: '',
+      data: formData,
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    });
+  };
+
   return (
-    <>
+    <Form onSubmit={submitForm}>
       <Header>
-        <span>천은별</span>님의 소중한 리뷰를 남겨주세요!
+        <span>고객님</span>의 소중한 리뷰를 남겨주세요!
       </Header>
 
-      <Product>
-        <ProductsLabel>구매한 제품 :</ProductsLabel>
-        <ProductsInput />
-      </Product>
+      <ImageUploading
+        multiple
+        value={images}
+        onChange={onChange}
+        maxNumber={maxNumber}
+        dataURLKey="data_url"
+      >
+        {({
+          imageList,
+          onImageUpload,
+          onImageUpdate,
+          onImageRemove,
+          isDragging,
+          dragProps,
+        }) => (
+          <ImageInput>
+            <ImgUploadBtn
+              style={isDragging ? { color: 'red' } : null}
+              onClick={onImageUpload}
+              {...dragProps}
+            >
+              <FaPlus />
+            </ImgUploadBtn>
+            <Overlay />
+            {imageList.map((image, index) => (
+              <div key={index}>
+                <Image src={image.data_url} alt="" width="100" />
+                <div>
+                  <UpdateBtn onClick={() => onImageUpdate(index)}>
+                    <GrUpdate />
+                  </UpdateBtn>
+                  <TrashBtn onClick={() => onImageRemove(index)}>
+                    <FaTrashAlt />
+                  </TrashBtn>
+                </div>
+              </div>
+            ))}
+          </ImageInput>
+        )}
+      </ImageUploading>
 
-      <Detail>
-        <DateLabel>날짜 :</DateLabel>
-        <DateInput />
-        <SubscriptionLabel>정기구독 :</SubscriptionLabel>
-        <SubscriptionInput />
-        <Months>개월</Months>
-      </Detail>
+      <ReviewInput
+        required
+        value={userInput}
+        onChange={e => setUserInput(e.target.value)}
+      />
 
-      <ImageInput />
-      <ReviewInput />
-      <Button>등록</Button>
-    </>
+      <Stars>
+        {stars.map((_, index) => {
+          return (
+            <FaStar
+              key={index}
+              size={24}
+              style={{ marginRight: 8, cursor: 'pointer' }}
+              color={
+                (hoverValue || currentValue) > index
+                  ? 'rgb(240, 86, 59)'
+                  : 'rgb(189, 195, 199)'
+              }
+              onClick={() => handleClick(index + 1)}
+              onMouseOver={() => handleMouseOver(index + 1)}
+              onMouseLeave={handleMouseLeave}
+            />
+          );
+        })}
+      </Stars>
+
+      <Button onClick={submitForm}>등록</Button>
+    </Form>
   );
 };
+
+const Form = styled.form``;
 
 const Header = styled.h1`
   font-size: 1.3rem;
@@ -38,26 +124,67 @@ const Header = styled.h1`
   }
 `;
 
-const Product = styled.div`
-  margin: 2rem 0;
+const ImageInput = styled.div`
+  position: relative;
+  width: 100%;
+  height: 9rem;
+  margin-top: 2rem;
 `;
 
-const ProductsLabel = styled.label.attrs({
-  htmlFor: 'products',
-})`
-  margin-right: 0.5rem;
-  font-size: 1.1rem;
-  font-weight: bold;
+const ImgUploadBtn = styled.button`
+  position: absolute;
+  left: 25%;
+  width: 8rem;
+  height: 8rem;
+  border: 2px solid #bdc3c7;
+  border-radius: 50%;
+  color: rgb(240, 86, 59);
+  font-size: 1.4rem;
 `;
 
-const ProductsInput = styled.input.attrs({
-  type: 'text',
-  id: 'products',
-  name: 'products',
-  value: '오메가3, 비타민B, 밀크씨슬',
+const Image = styled.img`
+  position: absolute;
+  right: 25%;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  object-fit: cover;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  right: 25%;
+  width: 8rem;
+  height: 8rem;
+  border: 2px solid #bdc3c7;
+  border-radius: 50%;
+`;
+
+const UpdateBtn = styled.button`
+  position: absolute;
+  top: 35%;
+  left: 17%;
+  font-size: 1.2rem;
+`;
+
+const TrashBtn = styled.button`
+  position: absolute;
+  top: 38%;
+  right: 17%;
+  font-size: 1.2rem;
+`;
+
+const Stars = styled.div`
+  padding: 0 35%;
+`;
+
+const ReviewInput = styled.textarea.attrs({
+  maxlength: '20',
+  placeholder: '상품 리뷰를 작성해주세요.',
 })`
-  width: 20rem;
-  height: 2.2rem;
+  width: 100%;
+  height: 12rem;
+  margin: 1.5rem 0;
   padding: 0.5rem;
   border: 2px solid #bdc3c7;
   border-radius: 10px;
@@ -67,76 +194,13 @@ const ProductsInput = styled.input.attrs({
   }
 `;
 
-const Detail = styled(Product)`
-  width: 100%;
-`;
-
-const DateLabel = styled(ProductsLabel)`
-  ${({ htmlFor }) => htmlFor === 'date' && css``}
-`;
-
-const DateInput = styled(ProductsInput).attrs({
-  type: 'date',
-  id: 'date',
-  name: 'date',
-  value: '2022/06/10',
-})`
-  width: 10rem;
-  margin-right: 5rem;
-`;
-
-const SubscriptionLabel = styled(ProductsLabel)`
-  ${({ htmlFor }) => htmlFor === 'subscription' && css``}
-`;
-
-const SubscriptionInput = styled(ProductsInput).attrs({
-  type: 'text',
-  id: 'subscription',
-  name: 'subscription',
-  value: '17',
-})`
-  width: 3rem;
-  text-align: center;
-`;
-
-const Months = styled.p`
-  display: inline-block;
-  margin-left: 0.5rem;
-`;
-
-const ImageInput = styled.input.attrs({
-  type: 'image',
-  placeholder: <FaPlus />,
-})`
-  width: 100%;
-  height: 10rem;
-  border: 2px solid #bdc3c7;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  &:active {
-    border: 2px solid rgb(240, 86, 59);
-  }
-`;
-
-const ReviewInput = styled(ProductsInput).attrs({
-  type: 'text',
-  minlength: '20',
-  maxlength: '200',
-  placeholder: '상품 리뷰를 작성해주세요.',
-  value: '',
-})`
-  width: 100%;
-  height: 15rem;
-  margin: 1.5rem 0;
-`;
-
 const Button = styled.button.attrs({
   type: 'submit',
 })`
-  width: 15rem;
-  height: 5rem;
-  margin: 0 25%;
-  padding: 2rem;
+  width: 16rem;
+  height: 3rem;
+  margin: 1rem 25%;
+  padding: 0.5rem;
   border-radius: 50px;
   background-color: rgb(240, 86, 59);
   color: #ffffff;

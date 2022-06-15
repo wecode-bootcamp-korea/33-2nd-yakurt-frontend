@@ -1,9 +1,29 @@
 import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MainCard from './MainCard';
 import MainContent from './MainContent';
 
-const MainReview = () => {
+const MainReview = ({ userReview, setUserReview }) => {
+  const navigate = useNavigate();
+  const params = useParams();
+
+  const handlePrevReview = () => {
+    fetch(`(API주소)/products/list/${params.id - 1}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => setUserReview(data));
+  };
+
+  const handleNextReview = () => {
+    fetch(`(API주소)/products/list/${params.id + 1}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => setUserReview(data));
+  };
+
   return (
     <Section>
       <MainCard>
@@ -11,9 +31,17 @@ const MainReview = () => {
       </MainCard>
 
       <More>
-        <Button>이전 후기</Button>
-        <ListButton>목록으로</ListButton>
-        <Button>다음 후기</Button>
+        <Button disabled={userReview <= 1} onClick={handlePrevReview}>
+          이전 후기
+        </Button>
+        <ListButton
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          목록으로
+        </ListButton>
+        <Button onClick={handleNextReview}>다음 후기</Button>
       </More>
     </Section>
   );
