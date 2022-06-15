@@ -2,8 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import MainReview from './MainReview';
 import Recommendation from './Recommendation';
+import { useCustomerReview } from '../../hooks/useCustomerReview';
 
 const ReviewDetail = () => {
+  const { userReview, setUserReview } = useCustomerReview();
+
   return (
     <ReviewDetailBody>
       <Header>
@@ -14,8 +17,8 @@ const ReviewDetail = () => {
       </Header>
 
       <Section>
-        <MainReview />
-        <Recommendation />
+        <MainReview userReview={userReview} setUserReview={setUserReview} />
+        <Recommendation userReview={userReview} />
       </Section>
     </ReviewDetailBody>
   );
