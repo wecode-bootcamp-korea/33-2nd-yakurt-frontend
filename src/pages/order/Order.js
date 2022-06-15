@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, ButtonGroup, ToggleButton } from 'react-bootstrap';
 import styled, { css } from 'styled-components';
 import DaumPostcode from 'react-daum-postcode';
@@ -10,22 +11,69 @@ import { useFetch } from '../../hooks/Fetch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Order = () => {
-  const orderItem = useFetch('/data/orderData.json');
+  const location = useLocation();
   const [totalPrice, setTotal] = useState(0);
   const [isOpenPost, setIsOpenPost] = useState(false);
   const [radioValue, setRadioValue] = useState('1');
+  const [orderItem, setOrderItem] = useState([]);
+  const [postMessage, setPostMessage] = useState('');
+  const [postData, setPostData] = useState({
+    select_cart: [],
+    delivery_message: '',
+    payment_method_id: 1,
+  });
   const { address, addressDetail, onCompletePost } = usePostApi(setIsOpenPost);
   const userData = useFetch('/data/userData.json');
+  const navigate = useNavigate();
 
   const onChangeOpenPost = () => {
     setIsOpenPost(!isOpenPost);
   };
 
+  const handleCheckClick = () => {
+    const selectCart = orderItem.map(cart => {
+      return cart.id;
+    });
+
+    setPostData({
+      select_cart: selectCart,
+      delivery_message: postMessage,
+      payment_method_id: radioValue,
+    });
+  };
+
+  const handleClick = () => {
+    fetch('http://10.58.6.4:8000/orders', {
+      method: 'POST',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.Ro8z9wYC94RH5eaNt0QxcUYZKd_wxQGzXRDVpYTw0do',
+      },
+      body: JSON.stringify(postData),
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(`주문 완료! \n 주문번호 : ${data.data.order_number}`);
+        navigate('/');
+      });
+  };
+
+  const handlePostMessageChange = e => {
+    const { value } = e.target;
+    setPostMessage(value);
+  };
+
   useEffect(() => {
     if (orderItem) {
-      orderItem.forEach(item => setTotal(prev => prev + item.price));
+      orderItem.forEach(item =>
+        setTotal(prev => prev + item.price * item.quantity)
+      );
     }
   }, [orderItem]);
+
+  useEffect(() => {
+    setOrderItem(location.state);
+  }, []);
 
   return (
     <>
@@ -121,7 +169,11 @@ const Order = () => {
           <InputLabel>나머지 주소</InputLabel>
           <UserInput placeholder="나머지 주소를 입력해주세요." able={true} />
           <InputLabel>배송시 요청사항</InputLabel>
-          <UserInput placeholder="배송 요청사항을 입력해주세요." able={true} />
+          <UserInput
+            placeholder="배송 요청사항을 입력해주세요."
+            onChange={handlePostMessageChange}
+            able={true}
+          />
           <UserInfoTitle>결제정보 등록</UserInfoTitle>
           <CardInfo>
             <ul>
@@ -146,9 +198,9 @@ const Order = () => {
               </CreditItem>
             ))}
           </CreditItemWrapper>
-          <CheckBox />
+          <CheckBox handleCheckClick={handleCheckClick} />
           <OrderBtn>
-            <button>주문하기</button>
+            <button onClick={handleClick}>주문하기</button>
           </OrderBtn>
         </OrderContent>
       </OrderWrapper>

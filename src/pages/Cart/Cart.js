@@ -13,21 +13,15 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const clear = () => {
-    setItemListValue();
+    setItemListValue([]);
   };
 
   const handleClickOrder = () => {
-    const query = check
-      .map(checkedItem => {
-        return `cart_id=${checkedItem.id}`;
-      })
-      .join('&');
-
-    fetch(`url/?${query}`, {
-      method: 'PATCH',
-    });
-
-    navigate('/order');
+    if (itemListValue.length === 0) {
+      return;
+    } else {
+      navigate('/order', { state: check });
+    }
   };
 
   const onCheck = (e, itemList) => {
@@ -39,14 +33,19 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    fetch('data/productList.json')
+    fetch('http://10.58.6.4:8000/carts', {
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.Ro8z9wYC94RH5eaNt0QxcUYZKd_wxQGzXRDVpYTw0do',
+      },
+    })
       .then(res => res.json())
       .then(result => {
-        setItemListValue(result);
+        setItemListValue(result.carts);
       });
   }, []);
 
-  return itemListValue ? (
+  return itemListValue.length !== 0 ? (
     <CartWrapper>
       <Content>
         <CartHeader clear={clear} />

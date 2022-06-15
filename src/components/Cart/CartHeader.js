@@ -42,7 +42,7 @@ const AddItem = styled.div`
   display: flex;
 `;
 
-const FirstBtn = styled.button`
+const FirstBtn = styled.div`
   width: 7rem;
   height: 3rem;
   border: 0.063rem solid #e0e0e0;

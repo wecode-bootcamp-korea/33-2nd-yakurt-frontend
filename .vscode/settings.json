@@ -9,6 +9,6 @@
   "eslint.alwaysShowStatus": true,
   "files.autoSave": "onFocusChange",
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.html-language-features"
   }
 }

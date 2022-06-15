@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const CheckBox = () => {
+const CheckBox = ({ handleCheckClick }) => {
   const [checkedList, setCheckedLists] = useState([]);
 
   const onCheckedAll = checked => {
@@ -24,6 +24,7 @@ const CheckBox = () => {
           type="checkbox"
           onChange={e => onCheckedAll(e.target.checked)}
           checked={checkedList.length === CHECKBOX_AGREEMENT.length}
+          onClick={handleCheckClick}
         />
         <UserInfoTitle>모두 동의하기</UserInfoTitle>
       </CheckWrapper>
