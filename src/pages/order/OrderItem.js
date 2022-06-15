@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-const OrderItem = ({ title, imgUrl, amount, price }) => {
+const OrderItem = ({ title, img, quantity, price }) => {
   return (
     <OrderItems>
       <div>
-        <img src={imgUrl} alt={title} />
+        <img src={img} alt={title} />
         <span>{title}</span>
       </div>
-      <span>{amount}</span>
-      <span>{price.toLocaleString()}원</span>
+      <span>{quantity}</span>
+      <span>{(price * quantity).toLocaleString()}원</span>
     </OrderItems>
   );
 };

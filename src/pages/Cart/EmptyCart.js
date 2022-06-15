@@ -69,7 +69,7 @@ const Icon = styled.div`
   font-size: 4rem;
 `;
 
-const Search = styled.button`
+const Search = styled.div`
   button {
     display: block;
     margin-top: 4rem;
