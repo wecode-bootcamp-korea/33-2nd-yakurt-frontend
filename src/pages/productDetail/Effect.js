@@ -1,14 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaHeartbeat } from 'react-icons/fa';
+import { icon } from '../../hooks/useProduct';
 
-const Effect = () => {
+const Effect = ({ productDetail }) => {
   return (
     <Flex>
-      <Icon>
-        <FaHeartbeat />
-      </Icon>
-      <Name>높은 혈압감소</Name>
+      <Icon>{productDetail.product_effect?.map(effect => icon[effect])}</Icon>
+      <Name>{productDetail.product_effect}</Name>
     </Flex>
   );
 };

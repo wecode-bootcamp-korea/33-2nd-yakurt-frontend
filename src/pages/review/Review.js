@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Card from './Card';
 import Content from './Content';
 
 const Review = () => {
   const [review, setReview] = useState([]);
-  const location = useLocation();
 
   useEffect(() => {
-    fetch(`htttp://10.58.5.236:8000/reviews${location.search}`)
+    fetch('http://10.58.5.236:8000/subscriptions/reviews')
       .then(response => response.json())
-      .then(data => setReview(data.results));
-  }, [location.search]);
+      .then(data => {
+        setReview(data.results);
+      });
+  }, []);
 
   const fetchData = () => {
-    fetch('htttp://10.58.5.236:8000/reviews')
+    fetch('http://10.58.5.236:8000/subscriptions/reviews')
       .then(res => res.json())
-      .then(data => setReview([...review, ...data]));
+      .then(data => setReview([...review, ...data.results]));
   };
 
   return (

@@ -1,35 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { FaPlus } from 'react-icons/fa';
+import CartMessage from './CartMessage';
+import { icon } from '../../hooks/useProduct';
+const Content = ({
+  productList,
+  message,
+  handleAddCart,
+  index,
+  productName,
+}) => {
+  const navigate = useNavigate();
+  const [addToCart, setAddToCart] = useState(false);
+  const [isClick, setIsClick] = useState(false);
 
-const Content = () => {
+  const handleIsClick = () => {
+    setIsClick(prev => !prev);
+  };
+
+  const goToDetail = () => {
+    navigate(`/products/${productList.id}`);
+  };
+
   return (
     <>
       <Division>
         <div>
-          <Description>편안하고 상쾌한 하루를 위한</Description>
-          <Name>발효효소 베이직</Name>
+          <Description>{productList?.title}</Description>
+          <Name>{productList?.name}</Name>
         </div>
-        <Image />
+        <Image src={productList?.image_url} />
       </Division>
 
+      <Effect>
+        {(productList?.product_effect).map((item, index) => (
+          <EffectIcon key={index}>{icon[item]}</EffectIcon>
+        ))}
+      </Effect>
+
       <SecondDivision>
-        <List>
-          <li>국제 특허 발효법 사용</li>
-          <li>국제 특허 발효법 사용</li>
-          <li>국제 특허 발효법 사용</li>
-        </List>
+        <Information>{productList?.information}</Information>
         <Detail>
-          <Effect>30일분</Effect>
-          <Price>18,500원</Price>
+          <Time>{productList?.time}</Time>
+          <Price>{Math.trunc(productList?.price).toLocaleString()}원</Price>
         </Detail>
       </SecondDivision>
 
-      <Link>더보기</Link>
+      <Link onClick={goToDetail}>더보기</Link>
 
-      <Button>
-        <FaPlus /> 장바구니 담기
+      <Button
+        onClick={() => handleAddCart(index, setAddToCart, handleIsClick)}
+        disabled={addToCart}
+      >
+        {addToCart ? '장바구니 추가됨' : '+ 장바구니 담기'}
       </Button>
+      {isClick && <CartMessage productList={productName} />}
     </>
   );
 };
@@ -47,27 +72,38 @@ const Description = styled.p`
 `;
 
 const Name = styled.h2`
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 700;
 `;
 
-const Image = styled.img.attrs({
-  src: 'https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg',
-})`
-  width: 80px;
-  height: 50px;
+const Image = styled.img.attrs(props => ({
+  src: props.src,
+}))`
+  width: 8rem;
+  height: 6rem;
+`;
+
+const Effect = styled.div`
+  display: flex;
+  height: 2rem;
+  margin: 1rem 0;
+`;
+
+const EffectIcon = styled.div`
+  margin-right: 0.8rem;
+  color: #2d3436;
+  font-size: 2rem;
 `;
 
 const SecondDivision = styled(Division)`
-  height: 100px;
-  margin-top: 50px;
+  height: 110px;
 `;
 
-const List = styled.ul`
-  margin-left: 20px;
-  list-style: circle;
+const Information = styled.ul`
+  width: 290px;
   line-height: 25px;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  word-break: keep-all;
 `;
 
 const Detail = styled.div`
@@ -76,19 +112,22 @@ const Detail = styled.div`
   align-items: space-between;
 `;
 
-const Effect = styled(Description)`
+const Time = styled(Description)`
   text-align: right;
   font-weight: bold;
   margin-bottom: 20px;
 `;
 
 const Price = styled.p`
+  text-align: right;
   font-size: 1.5rem;
   font-weight: bold;
 `;
 
 const Link = styled.button`
-  margin: 15px 20px;
+  position: absolute;
+  bottom: 130px;
+  padding-bottom: 0.25rem;
   border-bottom: 1.5px solid #000000;
   font-size: 1.1rem;
   font-weight: 700;
@@ -103,8 +142,9 @@ const Button = styled.button`
   padding: 15px 30px;
   border: none;
   border-radius: 50px;
-  box-shadow: 2px 3px 8px #000000;
-  background-color: #ffffff;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+  background-color: ${props => (props.addToCart ? '#ced6e0' : '#ffffff')};
+  color: ${props => (props.addToCart ? '#ffffff' : 'rgb(240, 86, 59)')};
   font-size: 1.2rem;
   font-weight: bold;
 `;

@@ -2,8 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 import Content from './Content';
+import { useProduct } from '../../hooks/useProduct';
 
 const Products = () => {
+  const { product } = useProduct();
+  const { message, handleAddCart } = useProduct();
+
   return (
     <>
       <Header>
@@ -14,9 +18,20 @@ const Products = () => {
       </Header>
 
       <Section>
-        <Card>
-          <Content />
-        </Card>
+        {product &&
+          product
+            .filter(item => item.is_subscription === true)
+            .map((productList, index) => (
+              <Card key={productList.id}>
+                <Content
+                  productList={productList}
+                  message={message}
+                  handleAddCart={handleAddCart}
+                  index={index}
+                  productName={productList.name}
+                />
+              </Card>
+            ))}
       </Section>
 
       <SectionHeader>
@@ -28,9 +43,19 @@ const Products = () => {
       </SectionHeader>
 
       <Section>
-        <Card>
-          <Content />
-        </Card>
+        {product &&
+          product
+            .filter(item => item.is_subscription === false)
+            .map((productList, index) => (
+              <Card key={productList.id}>
+                <Content
+                  productList={productList}
+                  message={message}
+                  handleAddCart={handleAddCart}
+                  index={index}
+                />
+              </Card>
+            ))}
       </Section>
     </>
   );
@@ -56,7 +81,7 @@ const Section = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 10px;
-  column-gap: 30px;
+  column-gap: 25px;
   width: 65%;
   height: auto;
   margin: 0 auto;

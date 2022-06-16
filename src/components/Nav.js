@@ -34,7 +34,7 @@ const NAV_DATA = [
     text: '추천성분',
   },
   {
-    id: '/product',
+    id: '/products/list',
     text: '제품보기',
   },
   {

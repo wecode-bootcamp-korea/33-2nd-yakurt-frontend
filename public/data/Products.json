@@ -1,156 +1,182 @@
 [
   {
     "id": 1,
-    "title": "발효효소 베이직",
-    "description": "편안하고 상쾌한 하루를 위한",
-    "effect": [],
-    "content": [
-      "국제 특허 발효법 사용",
-      "10가지 효소를 한번에",
-      "감초추출물 등 다양한 원료 함유"
-    ],
-    "period": 30,
-    "price": 18500,
-    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+    "title": "편안하고 상쾌한 하루를 위한",
+    "information": "리턴업 발효효소 베이직은 소화과정에서 꼭 필요한 2가지 소화효소를 정성껏 발효하여 충분하게 담았습니다.",
+    "name": "리턴업 발효효소 베이직",
+    "description": "효소는 소화과정에 있어 섭취하는 음식물을 분해하고, 영양소 흡수를 돕는 중요한 역할을 합니다.\n체내 소화에 필요한 특정효소는 나이가 들수록 감소하여, 타액 아밀라아제의 경우 노인집단의 효소량은 젊은 집단의 효소량보다 약 30배 적습니다",
+    "image_url": "https://img.pilly.kr/product/v20200519/cj-fermentenzyme/point@2x.jpg?v=v202111121657",
+    "price": "18500.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "product_effect": []
   },
   {
     "id": 2,
-    "name": "코엔자임Q10",
-    "description": "높은 혈압 감소를 위한",
-    "effect": ["항산화", "높은 혈압감소"],
-    "content": [
-      "항산화/높은 혈압 감소에 도움",
-      "인도산 코엔자임Q10 원료 사용",
-      "아사이베리 추출 분말 등 부원료 함유"
-    ],
-    "period": 30,
-    "price": 15700,
-    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+    "title": "높은 혈압 감소를 위한",
+    "information": "필리 코엔자임Q10은 국제표준인증(GMP, ISO_900, ISO_22000)을 획득한 원료를 사용하여, 우수한 품질관리를 통해 만들었습니다.",
+    "name": "필리 코엔자임Q10",
+    "description": "활성산소로부터 인체를 보호하고\n높은 혈압 감소에 도움을 줄 수 있습니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/coq10/point@2x.jpg?v=v202111121657",
+    "price": "15700.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "product_effect": ["항산화", "높은 혈압감소"]
   },
   {
     "id": 3,
-    "name": "히알루론산 스피루리나",
-    "description": "피부 건강을 위한",
-    "effect": ["피부보습", "피부건강", "항산화"],
-    "content": [
-      "피부보습/피부건강/항산화에 도움",
-      "국내 최초 2종 기능성 제품",
-      "국내산 쌀겨추출분말 함유"
-    ],
-    "period": 30,
-    "price": 19500,
-    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+    "title": "피부 건강을 위한",
+    "information": "필리 히알루론산 스피루리나는 피부 보습을 위한 히알루론산과 피부 건강·항산화를 위한 유기농 스피루리나에 국산 쌀겨추출물(부원료)를 더하여 우수한 품질관리를 통해 만들었습니다.",
+    "name": "필리 히알루론산 스피루리나",
+    "description": "피부 속 진피층에서 체내 수분을 저장하는 히알루론산의 보충으로 피부 보습에 도움을 줄 수 있습니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/hyals/point@2x.jpg?v=v202111121657",
+    "price": "19500.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "product_effect": ["피부 보습", "피부 건강", "항산화"]
   },
   {
     "id": 4,
-    "name": "홍삼 옥타코사놀",
-    "description": "면역력과 지구력을 위한",
-    "effect": ["면역", "항산화", "지구력"],
-    "content": [
-      "면역력 증진 및 항산화 효과",
-      "지구력 증진과 피로개선",
-      "국내산 6년근 홍삼"
-    ],
-    "period": 30,
-    "price": 21000,
-    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+    "title": "면역력과 지구력을 위한",
+    "information": "필리 홍삼 옥타코사놀은 국내산 6년근 홍삼과 옥타코사놀에 천연 비타민E를 포함하여 우수한 품질관리를 통해 만들었습니다.",
+    "name": "필리 홍삼 옥타코사놀",
+    "description": "홍삼에는 사포닌의 일종인 진세노사이드가 함유되어 있어 면역력 증진 및 피로개선 그리고 기억력 개선에 도움을 줄 수 있습니다.\n",
+    "image_url": "https://img.pilly.kr/product/v20200519/ginocta/point@2x.jpg?v=v202111121657",
+    "price": "21000.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "product_effect": ["면역", "항산화", "지구력"]
   },
   {
     "id": 5,
-    "name": "프로바이오틱스",
-    "description": "장과 원활한 배변활동을 위한",
-    "effect": ["장건강"],
-    "content": [
-      "유산균 증식 및 유해균 억제",
-      "캐나다/미국 등 11종 유산균 사용",
-      "프리바이오틱스 부원료 함유"
-    ],
-    "period": 30,
-    "price": 13800,
-    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+    "title": "장과 원활한 배변활동을 위한",
+    "information": "필리 프로바이오틱스는 캐나다 로셀의 PROBIOCAPⓇ 특허원료와 미국 다니스코 원료를 포함한 11종의 유산균을 사용하여 우수한 품질관리를 통해 만들었습니다.",
+    "name": "필리 프로바이오틱스",
+    "description": "유해한 균이 만드는 유독물질은 장에서 흡수되고, 우리 건강에 위험요인으로 작용합니다. 유산균은 유해균의 증식을 억제하여 장 건강에 도움을 줄 수 있습니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/probiotics/point@2x.jpg?v=v202111121657",
+    "price": "13800.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "product_effect": ["장건강"]
   },
   {
     "id": 6,
-    "name": "오메가3",
-    "description": "혈행개선/눈 건강을 위한",
-    "effect": ["눈", "혈액순환"],
-    "content": [
-      "형행 개선에 도움을 줄 수 있음",
-      "EPA와 DHA의 합 700mg",
-      "작은 어류를 사용한 rTG 오메가3"
-    ],
-    "period": 30,
-    "price": 13500,
-    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+    "title": "혈행개선/눈 건강을 위한",
+    "information": "필리 오메가3는 작은 어류를 원료로 사용하는 노르웨이산 프리미엄 rTG 오메가3(EPA 및 DHA 함유유지)를 사용하고 우수한 품질관리를 통해 만들었습니다.",
+    "name": "필리 오메가3",
+    "description": "EPA 및 DHA 함유유지는 인체 내 생성이 충분하지 않아 보충해주는 것이 건강에 도움이 됩니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/omega3/point@2x.jpg?v=v202111121657",
+    "price": "13500.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "product_effect": ["눈", "혈액 순환"]
   },
   {
     "id": 7,
-    "name": "칼슘 마그네슘 비타민D",
-    "description": "뼈/근육/신경을 위한",
-    "effect": ["뼈", "에너지"],
-    "content": [
-      "뼈와 치아 형성에 필요",
-      "골다공증 발생 위험 감소에 도움",
-      "북대서양에서 수확한 해조류 사용"
-    ],
-    "period": 30,
-    "price": 12400,
-    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+    "title": "뼈/근육/신경을 위한",
+    "information": "필리 칼슘 마그네슘 비타민D는 북대서양 해저에서 수확한 해조류를 사용한 영국산 해조분말에 비타민D와 마그네슘을 포함하여 우수한 품질관리를 통해 만들었습니다.",
+    "name": "필리 칼슘 마그네슘 비타민D",
+    "description": "뼈를 형성하는 칼슘은 신경과 근육 기능 유지와 정상적인 혈액 응고에 필요하며 골다공증 발생 위험 감소에 도움을 줍니다.\n",
+    "image_url": "https://img.pilly.kr/product/v20200519/calmgd/point@2x.jpg?v=v202111121657",
+    "price": "12400.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "product_effect": ["뼈", "에너지"]
   },
   {
     "id": 8,
-    "name": "비타민B",
-    "description": "에너지 충전을 위한",
-    "effect": ["에너지"],
-    "content": [
-      "체내 에너지 생성에 필요",
-      "각종 대사 활동에 필요",
-      "풍부한 7가지 비타민B 성분"
-    ],
-    "period": 30,
-    "price": 18500,
-    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+    "title": "에너지 충전을 위한",
+    "information": "필리 비타민B는 7가지 주요 비타민B군의 비타민을 충분히 섭취할 수 있고 우수한 품질관리를 통해 만들었습니다.",
+    "name": "필리 비타민B",
+    "description": "비타민B2, 나이아신은 체내 에너지 생성에 필요합니다. 활력이 없는 현대인에게 필요한 영양성분입니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/vitaminb/point@2x.jpg?v=v202111121657",
+    "price": "12000.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "product_effect": ["에너지"]
   },
   {
     "id": 9,
-    "name": "비타민C",
-    "description": "활성산소를 제거하는",
-    "effect": ["항산화", "면역"],
-    "content": [
-      "항산화/면역 개선에 도움",
-      "면역기능 및 세포보호 성분 포함",
-      "감초추출물 등 다양한 원료 함유"
-    ],
-    "period": 30,
-    "price": 11900,
-    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+    "title": "활성산소를 제거하는",
+    "information": "필리 비타민C는 품질이 좋은 영국 DSM사의 비타민C 원료와 셀레늄, 아연을 포함하여 우수한 품질관리를 통해 만들었습니다.",
+    "name": "필리 비타민C",
+    "description": "비타민 C는 세포 대사과정에서 생성되는 유리라디칼을 제거함으로써 산화적 손상을 방지합니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/vitaminc/point@2x.jpg?v=v202111121657",
+    "price": "11900.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "product_effect": ["항산화", "면역"]
   },
   {
     "id": 10,
-    "name": "밀크씨슬",
-    "description": "건강한 간을 위한",
-    "effect": ["간"],
-    "content": [
-      "국제 특허 발효법 사용",
-      "10가지 효소를 한번에",
-      "감초추출물 등 다양한 원료 함유"
-    ],
-    "period": 30,
-    "price": 11300,
-    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+    "title": "건강한 간을 위한",
+    "information": "필리 밀크씨슬은 유럽산 밀크씨슬을 이용하고 우수한 품질관리를 통해 만들었습니다.",
+    "name": "필리 밀크씨슬",
+    "description": "밀크시슬은 엉겅퀴라고 하는 억센 식물로 실리마린 성분을 가지고 있습니다. 실리마린 성분이 간세포를 보호하는 항산화 작용으로 간 건강에 도움을 줄 수 있습니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/milkthistle/point@2x.jpg?v=v202111121657",
+    "price": "11300.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "product_effect": ["간"]
   },
   {
     "id": 11,
-    "name": "루테인",
-    "description": "눈 건강을 위한",
-    "effect": ["눈"],
-    "content": [
-      "국제 특허 발효법 사용",
-      "10가지 효소를 한번에",
-      "감초추출물 등 다양한 원료 함유"
-    ],
-    "period": 30,
-    "price": 10600,
-    "image": "https://velog.velcdn.com/images/eunnb05/post/4fd9756f-f5b8-4abe-a763-4507eb816a7a/image.jpg"
+    "title": "눈 건강을 위한",
+    "information": "필리 루테인은 인도 카르나타카에서 재배된 마리골드꽃추출물을 사용하고 어두운 곳에서 시각 적응을 위해 필요한 비타민A를 포함하여 우수한 품질관리를 통해 만들었습니다.\n",
+    "name": "필리 루테인",
+    "description": "노화로 인해 망막의 황반색소 밀도가 줄어들지 않도록 루테인이 눈 건강에 도움을 줄 수 있습니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/lutein/point@2x.jpg?v=v202111121657",
+    "price": "10600.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "product_effect": ["눈"]
+  },
+  {
+    "id": 12,
+    "title": "장 활동을 촉진시키는",
+    "information": "리턴업 쾌변케어 차전자피는 차전자피를 1일 기준 5.5 g 이상 가득 담아 배변활동과 혈중 콜레스테롤 개선에 도움을 줄 수 있습니다.",
+    "name": "리턴업 쾌변케어 차전자피",
+    "description": "질경이과 식물의 씨앗 내피인 차전자피는 수용성 식이섬유와 불용성 식이섬유가 골고루 함유되어 있습니다. 차전자피는 수분과 만나 40배까지 팽창하여 장 속의 연동운동을 도와 배변 활동 원활 · 혈중 콜레스테롤 개선에 도움을 줄 수 있습니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/cj-psylliumhusk/point@2x.jpg?v=v202111121657",
+    "price": "26000.00",
+    "time": "1회구매",
+    "is_subscription": false,
+    "product_effect": ["장건강"]
+  },
+  {
+    "id": 13,
+    "title": "맑은 피부를 위한",
+    "information": "필리가 선택한 산자나무수, 보성어린녹차수의 비타민 컴플렉스가 21.5% 함유된 비타민 마스크팩으로 피부 속부터 수분과 비타민을 가득 채워줍니다.",
+    "name": "필리 내츄럴 비타민 21.5% 인핸싱 시트 마스크",
+    "description": "‘비타민 나무'라고 불리는 산자나무수가 함유되어 칙칙한 피부를 맑고 투명하게 가꾸어 주는 산뜻한 워터 타입의 비타민 마스크입니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/vitamask/point@2x.jpg?v=v202111121657",
+    "price": "2500.00",
+    "time": "1회구매",
+    "is_subscription": false,
+    "product_effect": []
+  },
+  {
+    "id": 14,
+    "title": "깨끗하고 촉촉한 손을 위한",
+    "information": "필리 마이솝 핸드겔은 보습력이 더해진 휴대용 세니타이저(소독제)로, 손에 있는 각종 유해 세균으로부터 건강을 지키도록 도와줍니다.\n",
+    "name": "필리 마이솝 핸드겔",
+    "description": "손에 있는 각종 유해 세균을 99.9% 살균하여 세균 감염으로 인한 질병 예방에 도움을 줍니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/mysoap/point.jpg?v=v202111121657",
+    "price": "3500.00",
+    "time": "1회구매",
+    "is_subscription": false,
+    "product_effect": []
+  },
+  {
+    "id": 15,
+    "title": "습기로부터 영양제를 지켜주는",
+    "information": "필리 습기를 막아주는 소분통은 의료용으로도 사용되는 독일 새너사의 제습 기술로 제작되었습니다.",
+    "name": "필리 습기를 막아주는 소분통 4개",
+    "description": "습기 제어 특화 기술로 의약용기 및 식품용기를 100년 이상 생산한 독일 새너사의 제품으로 4구 소분통을 구성하였습니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/debox4/bottle.png?v=v202111121657",
+    "price": "4000.00",
+    "time": "1회구매",
+    "is_subscription": false,
+    "product_effect": []
   }
 ]
