@@ -4,21 +4,21 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 function KakaoLogin() {
   const location = useLocation();
-  const IP = '10.58.7.114:8000';
+  const IP = '10.58.5.236:8000';
 
-  const KAKAO_CODE = location.search.split('=')[1];
+  const KAKAO_CODE = location.search;
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://${IP}/users/kakao/callback?code=${KAKAO_CODE}`, {
+    fetch(`http://${IP}/users/kakao/callback${KAKAO_CODE}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         localStorage.setItem('access_token', data.data.access_token);
+        navigate('/');
       });
-    navigate('/');
   }, []);
   return <div>kakaoLogin</div>;
 }

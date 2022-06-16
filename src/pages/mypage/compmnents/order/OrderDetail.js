@@ -105,7 +105,6 @@ const OrderWrapper = styled.section`
   display: flex;
   width: 46.875rem;
   padding-top: 1rem;
-  background-color: #fff;
   justify-content: center;
   height: 50vh;
   margin-left: 20px;
