@@ -94,7 +94,7 @@ const Survey = () => {
               <span>질문 {currentSlide + 1}</span>
               <h2>
                 {currentSlide > 0 ? userName : ''}
-                {currentSlide !== 6 && question[currentSlide].question}
+                {currentSlide !== 7 && question[currentSlide].question}
               </h2>
               <hr />
               {currentSlide === 0 && (

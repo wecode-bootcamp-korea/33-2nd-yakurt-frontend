@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useImageUpload, useStarRating } from '../../hooks/useReview';
 import ImageUploading from 'react-images-uploading';
 import styled from 'styled-components';
@@ -7,7 +7,10 @@ import { FaPlus, FaTrashAlt, FaStar } from 'react-icons/fa';
 import { GrUpdate } from 'react-icons/gr';
 
 const Content = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { images, maxNumber, onChange } = useImageUpload();
+  console.log(location);
   const {
     currentValue,
     hoverValue,
@@ -20,19 +23,22 @@ const Content = () => {
 
   const submitForm = e => {
     e.preventDefault();
-
+    console.log(location.state);
     const formData = new FormData();
-    formData.append('file', images);
+    formData.append('file', images[0].file);
     formData.append('content', userInput);
 
-    axios({
-      method: 'post',
-      url: '',
-      data: formData,
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
-    });
+    fetch(
+      `http://10.58.5.236:8000/subscriptions/${location.state[0].subscription_id}/review`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: localStorage.getItem('access_token'),
+        },
+        body: formData,
+      }
+    );
+    navigate('/subscriptions/reviews');
   };
 
   return (
@@ -108,7 +114,7 @@ const Content = () => {
         })}
       </Stars>
 
-      <Button onClick={submitForm}>등록</Button>
+      <Button type="submit">등록</Button>
     </Form>
   );
 };

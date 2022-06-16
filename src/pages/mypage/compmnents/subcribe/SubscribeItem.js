@@ -1,6 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 function SubscribeItem({ SubscribeList }) {
+  console.log(SubscribeList);
+  const navigate = useNavigate();
+
+  const moveTo = url => {
+    navigate(url, { state: SubscribeList });
+  };
+
   return (
     <SubscriptionListBox>
       {SubscribeList.map(item => (
@@ -19,9 +27,13 @@ function SubscribeItem({ SubscribeList }) {
               <span className="Discount"># 배송비 무료</span>
               <span className="Discount">#건강설문 할인</span>
               {item.subscription_review.length === 0 ? (
-                <ReviewBtn>리뷰쓰기</ReviewBtn>
+                <ReviewBtn onClick={() => moveTo('/review/customer')}>
+                  리뷰쓰기
+                </ReviewBtn>
               ) : (
-                <ReviewBtn>리뷰보기</ReviewBtn>
+                <ReviewBtn onClick={() => moveTo('/subscriptions/reviews')}>
+                  리뷰보기
+                </ReviewBtn>
               )}
             </AdditionalText>
           </AdditionalTextBox>

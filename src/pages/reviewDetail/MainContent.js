@@ -7,16 +7,17 @@ const MainContent = ({ userReview }) => {
     <>
       <Head>
         <Header>
-          <span>{userReview?.nick_name}</span>
+          <span>{userReview?.nick_name}</span>(
           {userReview.products
             ?.map(item => {
               return item.product_name;
             })
             .join(', ')}
+          )
         </Header>
         <Time>{userReview.create_at}</Time>
       </Head>
-      <Image />
+      <Image src={userReview?.image_url} />
       <Comment>{userReview.content}</Comment>
     </>
   );
@@ -32,6 +33,7 @@ const Header = styled.h2`
 
   span {
     font-weight: bold;
+    margin-right: 0.3rem;
   }
 `;
 
@@ -40,9 +42,7 @@ const Time = styled.p`
   text-align: right;
 `;
 
-const Image = styled.img.attrs({
-  src: 'https://velog.velcdn.com/images/eunnb05/post/ebb3bcce-237a-4c9a-8592-e39fb8fe1dc8/image.jpg',
-})`
+const Image = styled.img`
   width: 100%;
   height: 35rem;
   object-fit: cover;

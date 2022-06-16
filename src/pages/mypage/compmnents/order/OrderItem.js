@@ -38,7 +38,12 @@ function OrderItem({ OrderList }) {
                 )}
               </OrderNameBox>
 
-              <OrderPrice>{numberString(order.total_bill)}원</OrderPrice>
+              <OrderPrice>
+                {numberString(
+                  order.total_bill - (order.total_bill * 0.1 + 2500)
+                )}
+                원
+              </OrderPrice>
             </OrderedInfo>
           </OrderedList>
         ))}

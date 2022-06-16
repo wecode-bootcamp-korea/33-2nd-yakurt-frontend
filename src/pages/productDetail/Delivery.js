@@ -10,7 +10,9 @@ const Delivery = () => {
       <Grid>
         {DELIVERY_LIST.map(list => (
           <Container key={list.id}>
-            <Image src={list.image} />
+            <Image>
+              <span>{list.image}</span>
+            </Image>
             <Content>
               <Description>{list.description}</Description>
               <Text>{list.text}</Text>
@@ -77,6 +79,14 @@ const Image = styled.div`
   background-color: #ffffff;
   width: 7rem;
   height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-size: 2rem;
+    text-align: center;
+  }
 `;
 
 const Content = styled.div`

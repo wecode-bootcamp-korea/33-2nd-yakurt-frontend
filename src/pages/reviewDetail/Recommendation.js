@@ -7,7 +7,10 @@ const Recommendation = ({ userReview }) => {
   return (
     userReview && (
       <Aside>
-        <Title>{userReview.nick_name}님의 약쿠르트 영양제 종</Title>
+        <Title>
+          {userReview.nick_name}님의 약쿠르트 영양제{' '}
+          {userReview.products?.length}종
+        </Title>
         {userReview.products?.map(product => (
           <RecommendationCard key={product.product_id}>
             <RecommendationContent product={product} />

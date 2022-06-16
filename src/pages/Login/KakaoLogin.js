@@ -17,8 +17,8 @@ function KakaoLogin() {
       .then(res => res.json())
       .then(data => {
         localStorage.setItem('access_token', data.data.access_token);
+        navigate('/');
       });
-    navigate('/');
   }, []);
   return <div>kakaoLogin</div>;
 }

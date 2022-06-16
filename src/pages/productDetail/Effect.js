@@ -5,8 +5,12 @@ import { icon } from '../../hooks/useProduct';
 const Effect = ({ productDetail }) => {
   return (
     <Flex>
-      <Icon>{productDetail.product_effect?.map(effect => icon[effect])}</Icon>
-      <Name>{productDetail.product_effect}</Name>
+      {productDetail[0]?.product_effect?.map(effect => (
+        <>
+          <Icon>{icon[effect]}</Icon>
+          <Name>{effect}</Name>
+        </>
+      ))}
     </Flex>
   );
 };
@@ -16,7 +20,6 @@ const Flex = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 8.5rem;
   height: 3rem;
   margin-right: 1rem;
   line-height: 50%;
@@ -25,6 +28,7 @@ const Flex = styled.div`
 
 const Icon = styled.div`
   font-size: 40px;
+  margin: 0 0.5rem;
 `;
 
 const Name = styled.h4`

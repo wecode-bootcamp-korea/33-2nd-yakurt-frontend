@@ -26,7 +26,7 @@ const Review = () => {
       <Header>
         <Title>고객리뷰</Title>
         <Description>
-          약쿠르트를 이용해주신 고객님들의 리얼후기 <span>6,325건</span>을
+          약쿠르트를 이용해주신 고객님들의 리얼후기 <span>742건</span>을
           확인하세요!
         </Description>
       </Header>

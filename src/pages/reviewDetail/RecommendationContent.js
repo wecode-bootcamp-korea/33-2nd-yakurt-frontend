@@ -21,7 +21,7 @@ const Box = styled.div`
 const Description = styled.p`
   font-size: 1.2rem;
   font-weight: 300;
-  width: 10rem;
+  width: 13rem;
   margin: 0.5rem 0;
 `;
 

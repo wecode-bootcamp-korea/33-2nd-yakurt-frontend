@@ -33,7 +33,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    fetch('http://10.58.5.236:8000//carts', {
+    fetch('http://10.58.5.236:8000/carts', {
       headers: {
         Authorization: localStorage.getItem('access_token'),
       },
@@ -41,6 +41,7 @@ const Cart = () => {
       .then(res => res.json())
       .then(result => {
         setItemListValue(result.carts);
+        console.log(result);
       });
   }, []);
 

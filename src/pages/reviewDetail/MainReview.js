@@ -46,7 +46,7 @@ const MainReview = ({ userReview, setUserReview }) => {
         </Button>
         <ListButton
           onClick={() => {
-            navigate(-1);
+            navigate('/subscriptions/reviews');
           }}
         >
           목록으로

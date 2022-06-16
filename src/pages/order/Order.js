@@ -23,7 +23,7 @@ const Order = () => {
     payment_method_id: 1,
   });
   const { address, addressDetail, onCompletePost } = usePostApi(setIsOpenPost);
-  const userData = useFetch('http://10.58.5.236:8000/user');
+  const userData = useFetch('http://10.58.5.236:8000/users');
   const navigate = useNavigate();
 
   const onChangeOpenPost = () => {
@@ -46,8 +46,7 @@ const Order = () => {
     fetch('http://10.58.5.236:8000/orders', {
       method: 'POST',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.Ro8z9wYC94RH5eaNt0QxcUYZKd_wxQGzXRDVpYTw0do',
+        Authorization: localStorage.getItem('access_token'),
       },
       body: JSON.stringify(postData),
     })
@@ -122,11 +121,11 @@ const Order = () => {
           </Total>
           <UserInfoTitle>주문자 정보</UserInfoTitle>
           <InputLabel>이름</InputLabel>
-          <UserInput placeholder="이름" defaultValue={userData?.userName} />
+          <UserInput placeholder="이름" defaultValue={userData?.nick_name} />
           <InputLabel>연락처</InputLabel>
           <UserInput placeholder="연락처" />
           <InputLabel>이메일</InputLabel>
-          <UserInput placeholder="이메일" defaultValue={userData?.userEmail} />
+          <UserInput placeholder="이메일" defaultValue={userData?.email} />
           <CheckBoxWrapper>
             <input type="checkbox" defaultChecked />
             <label>주문자 정보 가져오기</label>
@@ -138,7 +137,7 @@ const Order = () => {
           <UserInput
             placeholder="수령인 이름"
             able={true}
-            defaultValue={userData?.userName}
+            defaultValue={userData?.nick_name}
           />
           <InputLabel>수령인 연락처</InputLabel>
           <UserInput placeholder="수령인 연락처" able={true} />
