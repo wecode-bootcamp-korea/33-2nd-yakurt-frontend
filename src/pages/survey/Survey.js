@@ -95,7 +95,7 @@ const Survey = () => {
               <span>질문 {currentSlide + 1}</span>
               <h2>
                 {currentSlide > 0 ? userName : ''}
-                {currentSlide !== 6 && question[currentSlide].question}
+                {currentSlide !== 7 && question[currentSlide].question}
               </h2>
               <hr />
               {currentSlide === 0 && (
@@ -395,6 +395,13 @@ const Symptom = styled.div`
 
 const Bar = styled(ProgressBar)`
   height: 5px;
+`;
+
+const Result = styled.h2`
+  width: 100%;
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: center;
 `;
 
 const QUESTION_NAV = [
