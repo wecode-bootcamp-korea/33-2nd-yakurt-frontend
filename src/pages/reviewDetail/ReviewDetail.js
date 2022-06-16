@@ -1,30 +1,37 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MainReview from './MainReview';
 import Recommendation from './Recommendation';
-import { useCustomerReview } from '../../hooks/useCustomerReview';
+import { useReviewDetail } from '../../hooks/useReview';
 
 const ReviewDetail = () => {
-  const { userReview, setUserReview } = useCustomerReview();
+  const params = useParams();
+  const { reviewDetail, setReviewDetail } = useReviewDetail(params.id);
 
   return (
-    <ReviewDetailBody>
-      <Header>
-        <Title>고객리뷰</Title>
-        <Description>
-          약쿠르트를 이용해주신 고객님들의 리얼후기 확인하세요!
-        </Description>
-      </Header>
+    reviewDetail && (
+      <ReviewDetailBody>
+        <Header>
+          <Title>고객리뷰</Title>
+          <Description>
+            약쿠르트를 이용해주신 고객님들의 리얼후기 확인하세요!
+          </Description>
+        </Header>
 
-      <Section>
-        <MainReview userReview={userReview} setUserReview={setUserReview} />
-        <Recommendation userReview={userReview} />
-      </Section>
-    </ReviewDetailBody>
+        <Section>
+          <MainReview
+            userReview={reviewDetail}
+            setUserReview={setReviewDetail}
+          />
+          <Recommendation userReview={reviewDetail} />
+        </Section>
+      </ReviewDetailBody>
+    )
   );
 };
 
-const ReviewDetailBody = styled.body`
+const ReviewDetailBody = styled.div`
   background-color: #f2f2f2;
 `;
 

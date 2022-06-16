@@ -9,25 +9,35 @@ const MainReview = ({ userReview, setUserReview }) => {
   const params = useParams();
 
   const handlePrevReview = () => {
-    fetch(`(API주소)/products/list/${params.id - 1}`)
+    fetch(
+      `http://10.58.5.236:8000/subscriptions/review/${parseInt(params.id) - 1}`
+    )
       .then(response => {
         return response.json();
       })
-      .then(data => setUserReview(data));
+      .then(data => {
+        setUserReview(data.results);
+        navigate(`/subscriptions/reviews/${parseInt(params.id) - 1}`);
+      });
   };
 
   const handleNextReview = () => {
-    fetch(`(API주소)/products/list/${params.id + 1}`)
+    fetch(
+      `http://10.58.5.236:8000/subscriptions/review/${parseInt(params.id) + 1}`
+    )
       .then(response => {
         return response.json();
       })
-      .then(data => setUserReview(data));
+      .then(data => {
+        setUserReview(data.results);
+        navigate(`/subscriptions/reviews/${parseInt(params.id) + 1}`);
+      });
   };
 
   return (
     <Section>
       <MainCard>
-        <MainContent />
+        <MainContent userReview={userReview} />
       </MainCard>
 
       <More>

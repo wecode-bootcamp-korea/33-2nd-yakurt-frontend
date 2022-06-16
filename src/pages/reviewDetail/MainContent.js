@@ -1,22 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const MainContent = ({ review }) => {
+const MainContent = ({ userReview }) => {
+  console.log(userReview);
   return (
     <>
       <Head>
         <Header>
-          <span>박**</span> 프로바이오틱스, 오메가3, 마그네슘 비타민D, 비타민C,
-          루테인
+          <span>{userReview?.nick_name}</span>
+          {userReview.products
+            ?.map(item => {
+              return item.product_name;
+            })
+            .join(', ')}
         </Header>
-        <Time>2022.05.06 / 정기구독 17개월</Time>
+        <Time>{userReview.create_at}</Time>
       </Head>
       <Image />
-      <Comment>
-        처음엔 어떻게 다 챙겨먹나 걱정이였는데 매일 카톡으로 섭취 체크 알림이
-        오고 매달 자동으로 배송이 오니 알아서 잘 챙겨먹게 되는 것 같아요!
-        건강해지는 느낌!!
-      </Comment>
+      <Comment>{userReview.content}</Comment>
     </>
   );
 };

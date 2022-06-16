@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 function KakaoLogin() {
   const location = useLocation();
-  const IP = '10.58.7.114:8000';
+  const IP = '10.58.5.236:8000';
 
   const KAKAO_CODE = location.search.split('=')[1];
 

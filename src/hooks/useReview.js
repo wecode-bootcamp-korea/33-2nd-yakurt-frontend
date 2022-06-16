@@ -11,8 +11,7 @@ export const useReview = () => {
   useEffect(() => {
     fetch(`http://10.58.5.236:8000/subscriptions/reviews`, {
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.XlUzgcSXSZv6CWzSs0ZL_IcaqbukQgMAWMXbbAwOoDs',
+        Authorization: localStorage.getItem('access_token'),
       },
     })
       .then(response => {
@@ -63,4 +62,21 @@ export const useStarRating = () => {
     handleMouseOver,
     handleMouseLeave,
   };
+};
+
+export const useReviewDetail = id => {
+  const [reviewDetail, setReviewDetail] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://10.58.5.236:8000/subscriptions/review/${id}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        setReviewDetail(data.results);
+        console.log(data);
+      });
+  }, []);
+
+  return { reviewDetail, setReviewDetail };
 };

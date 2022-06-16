@@ -6,7 +6,7 @@ const RecommendationCard = ({ children }) => {
 };
 
 const Container = styled.div`
-  height: 12rem;
+  height: 15rem;
   margin: 1.5rem 0;
   padding: 2.2rem 2rem;
   border-radius: 10px;

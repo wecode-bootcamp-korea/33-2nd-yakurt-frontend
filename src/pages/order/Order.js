@@ -23,7 +23,7 @@ const Order = () => {
     payment_method_id: 1,
   });
   const { address, addressDetail, onCompletePost } = usePostApi(setIsOpenPost);
-  const userData = useFetch('/data/userData.json');
+  const userData = useFetch('http://10.58.5.236:8000/user');
   const navigate = useNavigate();
 
   const onChangeOpenPost = () => {
@@ -43,7 +43,7 @@ const Order = () => {
   };
 
   const handleClick = () => {
-    fetch('http://10.58.6.4:8000/orders', {
+    fetch('http://10.58.5.236:8000/orders', {
       method: 'POST',
       headers: {
         Authorization:

@@ -6,7 +6,7 @@ export const useCustomerReview = () => {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`(API주소)/products/list/${params.id}`)
+    fetch(`http://10.58.5.236:8000/products/list/${params.id}`)
       .then(response => {
         return response.json();
       })

@@ -34,11 +34,11 @@ const NAV_DATA = [
     text: '추천성분',
   },
   {
-    id: '/products/list',
+    id: '/products',
     text: '제품보기',
   },
   {
-    id: '/review',
+    id: '/subscriptions/reviews',
     text: '고객후기',
   },
   {

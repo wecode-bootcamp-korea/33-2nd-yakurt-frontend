@@ -3,14 +3,18 @@ import styled from 'styled-components';
 import RecommendationCard from './RecommendationCard';
 import RecommendationContent from './RecommendationContent';
 
-const Recommendation = () => {
+const Recommendation = ({ userReview }) => {
   return (
-    <Aside>
-      <Title>박**님의 약쿠르트 영양제 6종</Title>
-      <RecommendationCard>
-        <RecommendationContent />
-      </RecommendationCard>
-    </Aside>
+    userReview && (
+      <Aside>
+        <Title>{userReview.nick_name}님의 약쿠르트 영양제 종</Title>
+        {userReview.products?.map(product => (
+          <RecommendationCard key={product.product_id}>
+            <RecommendationContent product={product} />
+          </RecommendationCard>
+        ))}
+      </Aside>
+    )
   );
 };
 

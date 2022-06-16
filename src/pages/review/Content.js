@@ -4,9 +4,8 @@ import styled from 'styled-components';
 
 const Content = ({ reviewList }) => {
   const navigate = useNavigate();
-
   const goToDetail = () => {
-    navigate(`/subscriptions/reviews/${reviewList.id}`);
+    navigate(`/subscriptions/reviews/${reviewList.id}`, { state: reviewList });
   };
 
   return (

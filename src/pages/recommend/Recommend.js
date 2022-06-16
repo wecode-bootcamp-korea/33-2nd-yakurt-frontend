@@ -9,8 +9,7 @@ const Recommend = () => {
   useEffect(() => {
     fetch('http://10.58.5.236:8000/survey/last', {
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.XlUzgcSXSZv6CWzSs0ZL_IcaqbukQgMAWMXbbAwOoDs',
+        Authorization: localStorage.getItem('access_token'),
       },
     })
       .then(res => res.json())
