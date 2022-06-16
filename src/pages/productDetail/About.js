@@ -42,7 +42,7 @@ const Grid = styled.div`
 
 const Container = styled.div`
   position: relative;
-  width: 16.5rem;
+  width: 15rem;
   height: 28rem;
   background-color: #ffffff;
 `;
@@ -63,15 +63,15 @@ const Content = styled.div`
 `;
 
 const Description = styled.h2`
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: bold;
 `;
 
 const Text = styled.p`
   padding-top: 1rem;
   color: #576574;
-  font-size: 1.1rem;
-  line-height: 1.7rem;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
   word-break: keep-all;
 `;
 

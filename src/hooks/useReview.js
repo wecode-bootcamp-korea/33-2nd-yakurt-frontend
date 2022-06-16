@@ -2,16 +2,28 @@ import { useState, useEffect } from 'react';
 
 export const useReview = () => {
   const [review, setReview] = useState([]);
+  const [visible, setVisible] = useState(3);
+
+  const showMoreReviews = () => {
+    setVisible(prevReview => prevReview + 3);
+  };
 
   useEffect(() => {
-    fetch('/data/Review.json')
+    fetch(`http://10.58.5.236:8000/subscriptions/reviews`, {
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.XlUzgcSXSZv6CWzSs0ZL_IcaqbukQgMAWMXbbAwOoDs',
+      },
+    })
       .then(response => {
         return response.json();
       })
-      .then(data => setReview(data));
+      .then(data => {
+        setReview(data.results);
+      });
   }, []);
 
-  return { review };
+  return { review, visible, showMoreReviews };
 };
 
 export const useImageUpload = () => {

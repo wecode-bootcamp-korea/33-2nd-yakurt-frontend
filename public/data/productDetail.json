@@ -1,0 +1,15 @@
+[
+  {
+    "id": 2,
+    "title": "높은 혈압 감소를 위한",
+    "information": "필리 코엔자임Q10은 국제표준인증(GMP, ISO_900, ISO_22000)을 획득한 원료를 사용하여, 우수한 품질관리를 통해 만들었습니다.",
+    "name": "필리 코엔자임Q10",
+    "description": "활성산소로부터 인체를 보호하고\n높은 혈압 감소에 도움을 줄 수 있습니다.",
+    "image_url": "https://img.pilly.kr/product/v20200519/coq10/point@2x.jpg?v=v202111121657",
+    "price": "15700.00",
+    "time": "30일분",
+    "is_subscription": true,
+    "review_count": 1,
+    "product_effect": ["항산화", "높은 혈압감소"]
+  }
+]

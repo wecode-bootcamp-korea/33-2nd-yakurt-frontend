@@ -1,30 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Effect from './Effect';
 import About from './About';
 import Delivery from './Delivery';
+import Card from '../review/Card';
+import Content from '../review/Content';
+import CartMessage from '../products/CartMessage';
+import { useReview } from '../../hooks/useReview';
+import { useProductDetail, useProduct } from '../../hooks/useProduct';
 import { BiCommentDots } from 'react-icons/bi';
 
 const ProductDetail = () => {
+  const { review, visible, showMoreReviews } = useReview();
+  const productDetail = useProductDetail();
+  const { message, handleAddCart } = useProduct();
+  const [addToCart, setAddToCart] = useState(false);
+
   return (
     <>
       <Header>
         <Container>
-          <Description>높은 혈압 감소를 위한</Description>
-          <Title>약쿠르트 코엔자임 Q10</Title>
+          <Description>{productDetail[0]?.title}</Description>
+          <Title>{productDetail[0]?.name}</Title>
           <Box>
-            <Effect />
+            <Effect productDetail={productDetail} />
           </Box>
-          <Information>
-            약쿠르트 코엔자임Q10은 국제표준인증을 획득한 원료를 사용하여,
-            <br />
-            우수한 품질관리를 통해 만들었습니다.
-          </Information>
+          <Information>{productDetail[0]?.description}</Information>
           <SecondBox>
-            <Time>30일분</Time>
-            <Price>15,700원</Price>
+            <Time>{productDetail[0]?.time}</Time>
+            <Price>
+              {Math.trunc(productDetail[0]?.price).toLocaleString()}원
+            </Price>
           </SecondBox>
-          <Button>장바구니 담기</Button>
+          <Button
+            onClick={index => handleAddCart(index, setAddToCart)}
+            disabled={addToCart}
+          >
+            장바구니 담기
+          </Button>
+          {message && <CartMessage productList={productDetail[0]} />}
         </Container>
       </Header>
 
@@ -32,18 +46,31 @@ const ProductDetail = () => {
         <Icon>
           <BiCommentDots />
         </Icon>
-        <ReviewBtn>14개의 후기 보러가기</ReviewBtn>
-        <Image />
+        <ReviewBtn>
+          {productDetail[0]?.review_count}개의 후기 보러가기
+        </ReviewBtn>
+        <Image image={productDetail[0]?.image_url} />
         <InfoTitle>믿을 수 있는 원료</InfoTitle>
-        <Info>
-          아사이베리추출분말, 빌베리 추출물, 포도씨앗유 등 부원료 함유
-        </Info>
+        <Info>{productDetail[0]?.information}</Info>
       </Divide>
 
       <Extra>
         <About />
         <Delivery />
       </Extra>
+
+      <Review>
+        <ReviewTitle>고객 후기</ReviewTitle>
+        <ReviewSection>
+          {review &&
+            review.slice(0, visible).map(reviewList => (
+              <Card key={reviewList.id}>
+                <Content reviewList={reviewList} />
+              </Card>
+            ))}
+        </ReviewSection>
+        <MoreReviewsBtn onClick={showMoreReviews}>더 보기</MoreReviewsBtn>
+      </Review>
     </>
   );
 };
@@ -63,8 +90,8 @@ const Container = styled.div`
 `;
 
 const Description = styled.h1`
-  font-size: 2.8rem;
-  line-height: 3.2rem;
+  font-size: 2.9rem;
+  line-height: 3.5rem;
 `;
 
 const Title = styled(Description)`
@@ -125,19 +152,20 @@ const Icon = styled.div`
 `;
 
 const ReviewBtn = styled.button`
-  width: 10.5rem;
+  width: 11rem;
   margin: 0 auto;
+  padding-bottom: 0.5rem;
   border-bottom: 1.5px solid #8395a7;
   color: #8395a7;
   font-size: 1.2rem;
 `;
 
-const Image = styled.img.attrs({
-  src: 'https://velog.velcdn.com/images/eunnb05/post/317147c7-8336-4c30-b1a2-b3df016a029a/image.jpg',
-})`
-  margin: 10rem auto 5rem auto;
-  width: 60rem;
-  height: 35rem;
+const Image = styled.img.attrs(props => ({
+  src: props.image,
+}))`
+  margin: 2rem auto 1rem auto;
+  width: 45rem;
+  height: 30rem;
 `;
 
 const InfoTitle = styled.h1`
@@ -153,6 +181,42 @@ const Info = styled.p`
 
 const Extra = styled.section`
   background-color: #f2f2f2;
+`;
+
+const Review = styled(Extra)`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ReviewTitle = styled.h1`
+  margin-bottom: 6rem;
+  padding-left: 16.5rem;
+  color: rgb(240, 86, 59);
+  font-size: 1.5rem;
+  font-weight: 700;
+`;
+
+const ReviewSection = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 15px;
+  row-gap: 60px;
+  margin: 0 auto;
+
+  width: 65%;
+  min-height: auto;
+`;
+
+const MoreReviewsBtn = styled.button`
+  width: 65%;
+  height: 3.5rem;
+  margin: 5rem auto;
+  padding: 2rem auto;
+  border-radius: 10px;
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
 `;
 
 export default ProductDetail;

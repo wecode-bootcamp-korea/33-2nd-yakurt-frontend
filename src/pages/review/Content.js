@@ -6,23 +6,24 @@ const Content = ({ reviewList }) => {
   const navigate = useNavigate();
 
   const goToDetail = () => {
-    navigate(`/review/detail/${reviewList.id}`);
+    navigate(`/subscriptions/reviews/${reviewList.id}`);
   };
 
   return (
     <>
       <Top>
         <Preview>
-          <span>{reviewList?.name.slice(0, 1)}**</span>
-          (오메가3, 비타민B, 밀크씨슬)
+          <span>{reviewList?.nick_name.slice(0, 1)}**</span> (
+          {reviewList?.products})
         </Preview>
         <Period>
-          {reviewList?.date} / 정기구독 {reviewList?.subscription}개월
+          {reviewList?.create_at} / 정기구독 {reviewList?.subscriptions_months}
+          개월
         </Period>
       </Top>
-      <Image src={reviewList?.image} />
+      <Image src={reviewList?.image_url} />
       <Bottom>
-        <Text>{reviewList?.comment}</Text>
+        <Text>{reviewList?.content}</Text>
         <Button onClick={goToDetail}>더보기</Button>
       </Bottom>
     </>
@@ -35,7 +36,8 @@ const Top = styled.div`
 
 const Preview = styled.p`
   margin: 0 auto;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  line-height: 1.4rem;
 
   span {
     font-weight: bold;

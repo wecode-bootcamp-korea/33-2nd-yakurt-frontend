@@ -22,6 +22,27 @@ const Delivery = () => {
   );
 };
 
+const DELIVERY_LIST = [
+  {
+    id: 1,
+    image: <FaPhone />,
+    description: '01.2345.6789',
+    text: '상담시간 (평일)<br/> AM 10:00 ~ 12:00<br /> PM 14:00 ~ 17:00',
+  },
+  {
+    id: 2,
+    image: <TbTruckReturn />,
+    description: '교환/반품',
+    text: '"약쿠르트"는 좋은 제품을 제공하기 위해 노력하며 소비자 보호 규정을 준수합니다.',
+  },
+  {
+    id: 3,
+    image: <TbTruckDelivery />,
+    description: '당일출고',
+    text: '평일 오전 결제완료 시 당일 출고 가능합니다.',
+  },
+];
+
 const Section = styled.section`
   width: 65%;
   margin: 0 auto;
@@ -46,23 +67,24 @@ const Container = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 20rem;
+  width: 18rem;
   height: 10rem;
 `;
 
-const Image = styled.img`
+const Image = styled.div`
   padding: 2rem;
   border-radius: 50%;
   background-color: #ffffff;
-  font-size: 4rem;
+  width: 7rem;
+  height: 6rem;
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: space-between;
-  width: 20rem;
   height: 7rem;
+  width: 12rem;
   margin-left: 1rem;
 `;
 
@@ -73,30 +95,9 @@ const Description = styled.h2`
 `;
 
 const Text = styled.p`
-  font-size: 1rem;
+  font-size: 0.8rem;
   line-height: 1.3rem;
   word-break: keep-all;
 `;
-
-const DELIVERY_LIST = [
-  {
-    id: 1,
-    image: <FaPhone />,
-    description: '01.2345.6789',
-    text: '상담시간 (평일)<br/> AM 10:00 ~ 12:00<br /> PM 14:00 ~ 17:00',
-  },
-  {
-    id: 2,
-    image: <TbTruckReturn />,
-    description: '교환/반품',
-    text: '"약쿠르트"는 좋은 제품을 제공하기 위해 노력하며 소비자 보호 규정을 준수합니다.',
-  },
-  {
-    id: 3,
-    image: <TbTruckDelivery />,
-    description: '당일출고',
-    text: '평일 오전 결제완료 시 당일 출고 가능합니다.',
-  },
-];
 
 export default Delivery;

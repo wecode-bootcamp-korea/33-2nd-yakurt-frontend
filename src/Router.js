@@ -21,11 +21,11 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/product" element={<Products />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/survey" element={<Survey />} />
-        <Route path="/reviews" element={<Review />} />
-        <Route path="/reviews/:id" element={<ReviewDetail />} />
+        <Route path="/subscriptions/reviews" element={<Review />} />
+        <Route path="/subscriptions/reviews/:id" element={<ReviewDetail />} />
         <Route path="/review/customer" element={<CustomerReview />} />
         <Route path="/recommend" element={<Recommend />} />
         <Route path="/order" element={<Order />} />
