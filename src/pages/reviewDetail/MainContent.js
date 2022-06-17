@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MainContent = ({ userReview }) => {
-  console.log(userReview);
   return (
     <>
       <Head>

@@ -2,16 +2,15 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 function SubscribeItem({ SubscribeList }) {
-  console.log(SubscribeList);
   const navigate = useNavigate();
 
-  const moveTo = url => {
-    navigate(url, { state: SubscribeList });
+  const moveTo = (url, index) => {
+    navigate(url, { state: [SubscribeList, index] });
   };
 
   return (
     <SubscriptionListBox>
-      {SubscribeList.map(item => (
+      {SubscribeList.map((item, index) => (
         <SubscriptionList key={item.subscription_id}>
           <PriceNameBox>
             <span className="ING">진행중</span>
@@ -27,7 +26,7 @@ function SubscribeItem({ SubscribeList }) {
               <span className="Discount"># 배송비 무료</span>
               <span className="Discount">#건강설문 할인</span>
               {item.subscription_review.length === 0 ? (
-                <ReviewBtn onClick={() => moveTo('/review/customer')}>
+                <ReviewBtn onClick={() => moveTo('/review/customer', index)}>
                   리뷰쓰기
                 </ReviewBtn>
               ) : (

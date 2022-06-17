@@ -3,15 +3,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MainCard from './MainCard';
 import MainContent from './MainContent';
+import { IP } from '../../hooks/Fetch';
 
 const MainReview = ({ userReview, setUserReview }) => {
   const navigate = useNavigate();
   const params = useParams();
 
   const handlePrevReview = () => {
-    fetch(
-      `http://10.58.5.236:8000/subscriptions/review/${parseInt(params.id) - 1}`
-    )
+    fetch(`${IP}subscriptions/review/${parseInt(params.id) - 1}`)
       .then(response => {
         return response.json();
       })
@@ -22,9 +21,7 @@ const MainReview = ({ userReview, setUserReview }) => {
   };
 
   const handleNextReview = () => {
-    fetch(
-      `http://10.58.5.236:8000/subscriptions/review/${parseInt(params.id) + 1}`
-    )
+    fetch(`${IP}subscriptions/review/${parseInt(params.id) + 1}`)
       .then(response => {
         return response.json();
       })

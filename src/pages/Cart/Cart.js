@@ -5,6 +5,7 @@ import CartHeader from '../../components/Cart/CartHeader';
 import ProductList from '../../components/Cart/ProductList';
 import Payment from '../../components/Cart/Payment';
 import EmptyCart from './EmptyCart';
+import { IP } from '../../hooks/Fetch';
 
 const Cart = () => {
   const [itemListValue, setItemListValue] = useState([]);
@@ -33,7 +34,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    fetch('http://10.58.5.236:8000/carts', {
+    fetch(`${IP}carts`, {
       headers: {
         Authorization: localStorage.getItem('access_token'),
       },
@@ -41,7 +42,6 @@ const Cart = () => {
       .then(res => res.json())
       .then(result => {
         setItemListValue(result.carts);
-        console.log(result);
       });
   }, []);
 

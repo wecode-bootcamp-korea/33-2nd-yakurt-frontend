@@ -18,3 +18,5 @@ export const useFetch = url => {
 
   return fetchData;
 };
+
+export const IP = 'http://10.58.4.228:8001/';

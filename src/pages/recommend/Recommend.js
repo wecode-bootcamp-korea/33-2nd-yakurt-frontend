@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import Nav from '../../components/Nav';
 import Pills from './Pills';
+import { IP } from '../../hooks/Fetch';
 
 const Recommend = () => {
   const [recommend, setRecommend] = useState({});
 
   useEffect(() => {
-    fetch('http://10.58.5.236:8000/survey/last', {
+    fetch(`${IP}survey/last`, {
       headers: {
         Authorization: localStorage.getItem('access_token'),
       },

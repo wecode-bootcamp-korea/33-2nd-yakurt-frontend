@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import ServeyItem from './ServeyItem';
+import { IP } from '../../../../hooks/Fetch';
 
 function Servey() {
   const [serveyList, setserveyList] = useState([]);
   const ServeyEmpty = serveyList.length === 0;
   useEffect(() => {
-    fetch('http://10.58.5.236:8000/survey', {
+    fetch(`${IP}survey`, {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('access_token'),

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { IP } from './Fetch';
 
 export const useReview = () => {
   const [review, setReview] = useState([]);
@@ -9,7 +10,7 @@ export const useReview = () => {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.5.236:8000/subscriptions/reviews`, {
+    fetch(`${IP}subscriptions/reviews`, {
       headers: {
         Authorization: localStorage.getItem('access_token'),
       },
@@ -68,13 +69,12 @@ export const useReviewDetail = id => {
   const [reviewDetail, setReviewDetail] = useState([]);
 
   useEffect(() => {
-    fetch(`http://10.58.5.236:8000/subscriptions/review/${id}`)
+    fetch(`${IP}subscriptions/review/${id}`)
       .then(response => {
         return response.json();
       })
       .then(data => {
         setReviewDetail(data.results);
-        console.log(data);
       });
   }, []);
 

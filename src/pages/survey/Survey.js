@@ -8,6 +8,7 @@ import {
   useUserGender,
   useQuestionData,
 } from '../../hooks/useUserInfo';
+import { IP } from '../../hooks/Fetch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Survey = () => {
@@ -37,7 +38,7 @@ const Survey = () => {
     }
 
     if (currentSlide === 6) {
-      fetch('http://10.58.5.236:8000/survey', {
+      fetch(`${IP}survey`, {
         method: 'POST',
         headers: {
           Authorization: localStorage.getItem('access_token'),

@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import Yakorder from '../Yakorder';
 import Yaksub from '../Yaksub';
+import { IP } from '../../../hooks/Fetch';
 
 function Yak() {
   const [myData, setMydata] = useState();
   useEffect(() => {
-    fetch(`http://10.58.5.236:8000/orders`, {
+    fetch(`${IP}orders`, {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('access_token'),

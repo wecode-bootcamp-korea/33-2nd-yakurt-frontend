@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import OrderItem from './OrderItem';
+import { IP } from '../../../../hooks/Fetch';
 
 function Order() {
   const [OrderList, setOrderList] = useState([]);
   const OrderListEmpty = OrderList.length === 0;
 
   useEffect(() => {
-    fetch(`http://10.58.5.236:8000/orders`, {
+    fetch(`${IP}orders`, {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('access_token'),

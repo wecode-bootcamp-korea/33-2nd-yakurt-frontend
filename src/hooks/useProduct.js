@@ -15,6 +15,7 @@ import {
   MdOutlineTimer,
   MdOutlineBloodtype,
 } from 'react-icons/md';
+import { IP } from './Fetch';
 
 export const useProduct = () => {
   const [product, setProduct] = useState([]);
@@ -22,7 +23,7 @@ export const useProduct = () => {
   const location = useLocation();
 
   useEffect(() => {
-    fetch(`http://10.58.5.236:8000/products${location.search}`)
+    fetch(`${IP}products${location.search}`)
       .then(response => {
         return response.json();
       })
@@ -46,7 +47,7 @@ export const useProduct = () => {
     handleIsClick();
     setTimeout(handleIsClick, 3000);
 
-    fetch('http://10.58.5.236:8000/carts', {
+    fetch(`${IP}carts`, {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('access_token'),
@@ -68,7 +69,7 @@ export const useProductDetail = () => {
   const [productDetail, setProductDetail] = useState([]);
   const params = useParams();
   useEffect(() => {
-    fetch(`http://10.58.5.236:8000/products/${params.id}`)
+    fetch(`${IP}products/${params.id}`)
       .then(response => {
         return response.json();
       })

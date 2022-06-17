@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Card from './Card';
 import Content from './Content';
+import { IP } from '../../hooks/Fetch';
 
 const Review = () => {
   const [review, setReview] = useState([]);
 
   useEffect(() => {
-    fetch('http://10.58.5.236:8000/subscriptions/reviews')
+    fetch(`${IP}subscriptions/reviews`)
       .then(response => response.json())
       .then(data => {
         setReview(data.results);
@@ -16,7 +17,7 @@ const Review = () => {
   }, []);
 
   const fetchData = () => {
-    fetch('http://10.58.5.236:8000/subscriptions/reviews')
+    fetch(`${IP}subscriptions/reviews`)
       .then(res => res.json())
       .then(data => setReview([...review, ...data.results]));
   };

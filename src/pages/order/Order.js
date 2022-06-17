@@ -9,6 +9,7 @@ import CheckBox from './CheckBox';
 import { usePostApi } from './PostApi';
 import { useFetch } from '../../hooks/Fetch';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { IP } from '../../hooks/Fetch';
 
 const Order = () => {
   const location = useLocation();
@@ -23,7 +24,7 @@ const Order = () => {
     payment_method_id: 1,
   });
   const { address, addressDetail, onCompletePost } = usePostApi(setIsOpenPost);
-  const userData = useFetch('http://10.58.5.236:8000/users');
+  const userData = useFetch(`${IP}users`);
   const navigate = useNavigate();
 
   const onChangeOpenPost = () => {
@@ -43,7 +44,7 @@ const Order = () => {
   };
 
   const handleClick = () => {
-    fetch('http://10.58.5.236:8000/orders', {
+    fetch(`${IP}orders`, {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('access_token'),

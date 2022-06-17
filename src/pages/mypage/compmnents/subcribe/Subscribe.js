@@ -2,12 +2,13 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
 import SubscribeItem from './SubscribeItem';
+import { IP } from '../../../../hooks/Fetch';
 
 function Subscribe() {
   const [SubscribeList, setSubscribeList] = useState([]);
   const SubscribeEmpty = SubscribeList.length === 0;
   useEffect(() => {
-    fetch('http://10.58.5.236:8000/subscriptions', {
+    fetch(`${IP}subscriptions`, {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('access_token'),

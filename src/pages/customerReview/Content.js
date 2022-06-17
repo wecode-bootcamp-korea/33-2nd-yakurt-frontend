@@ -5,12 +5,12 @@ import ImageUploading from 'react-images-uploading';
 import styled from 'styled-components';
 import { FaPlus, FaTrashAlt, FaStar } from 'react-icons/fa';
 import { GrUpdate } from 'react-icons/gr';
+import { IP } from '../../hooks/Fetch';
 
 const Content = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { images, maxNumber, onChange } = useImageUpload();
-  console.log(location);
   const {
     currentValue,
     hoverValue,
@@ -23,13 +23,13 @@ const Content = () => {
 
   const submitForm = e => {
     e.preventDefault();
-    console.log(location.state);
     const formData = new FormData();
     formData.append('file', images[0].file);
     formData.append('content', userInput);
-
     fetch(
-      `http://10.58.5.236:8000/subscriptions/${location.state[0].subscription_id}/review`,
+      `${IP}subscriptions/${
+        location.state[0][location.state[1]].subscription_id
+      }/review`,
       {
         method: 'POST',
         headers: {
@@ -37,8 +37,7 @@ const Content = () => {
         },
         body: formData,
       }
-    );
-    navigate('/subscriptions/reviews');
+    ).then(res => navigate('/subscriptions/reviews'));
   };
 
   return (
