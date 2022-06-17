@@ -4,7 +4,8 @@ import styled, { css } from 'styled-components';
 const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const login = !!localStorage.getItem('access_token');
+  const YAKURT_TOKEN = localStorage.getItem('access_token');
+  const isLogin = !!YAKURT_TOKEN;
 
   const moveTo = path => {
     navigate(path);
@@ -19,7 +20,7 @@ const Nav = () => {
           key={id}
           onClick={() => moveTo(id)}
           active={location.pathname === id}
-          isLogin={login}
+          isLogin={isLogin}
         >
           {text}
         </Category>

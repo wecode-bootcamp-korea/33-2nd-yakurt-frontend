@@ -397,6 +397,13 @@ const Bar = styled(ProgressBar)`
   height: 5px;
 `;
 
+const Result = styled.h2`
+  width: 100%;
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: center;
+`;
+
 const QUESTION_NAV = [
   {
     id: 1,
