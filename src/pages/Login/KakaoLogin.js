@@ -6,12 +6,12 @@ import { IP } from '../../hooks/Fetch';
 function KakaoLogin() {
   const location = useLocation();
 
-  const KAKAO_CODE = location.search.split('=')[1];
+  const KAKAO_CODE = location.search;
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${IP}users/kakao/callback?code=${KAKAO_CODE}`, {
+    fetch(`${IP}users/kakao/callback${KAKAO_CODE}`, {
       method: 'GET',
     })
       .then(res => res.json())
